@@ -4,6 +4,8 @@ var player_pos : Vector2
 var player_max_health : int
 var player_health : int
 
+# Testing
+
 var upgrades = {
 	'Base Upgrade': {
 		'Description': 'Base upgrade, grants no specific effect.',
