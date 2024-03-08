@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://ju1x68n2bd00"]
+
+[sub_resource type="Gradient" id="Gradient_t3ynx"]
+colors = PackedColorArray(1, 0, 0.223529, 1, 1, 0.643, 0.37, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vk1rv"]
+gradient = SubResource("Gradient_t3ynx")
+width = 1820
+height = 32
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="healthbar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -910.0
+offset_top = -32.0
+offset_right = 910.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_vk1rv")
