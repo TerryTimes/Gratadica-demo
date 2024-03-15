@@ -7,7 +7,7 @@ var length = base_length
 var point = Vector2()
 
 @onready var parent = get_parent()
-@onready var sprite = parent.get_node("Sprite2D")
+@onready var sprite = parent.sprite
 
 func _ready():
 	points = []
@@ -20,7 +20,7 @@ func _process(_delta):
 	global_position = Vector2(0,0)
 	global_rotation = 0
 	
-	point = parent.global_position - Vector2(0, sprite.texture.get_height() / 4 * sprite.get_scale()[1])
+	point = parent.global_position
 	
 	add_point(point)
 	while get_point_count()>length:

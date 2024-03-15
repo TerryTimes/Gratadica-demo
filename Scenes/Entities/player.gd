@@ -14,12 +14,11 @@ var grip_change_rate = 0.2 # Decides how powerful extendo grip is.
 var health = max_health
 
 @onready var camera = $Camera2D
-@onready var animation_tree : AnimationTree = $AnimationTree
+@onready var sprite = $AnimatedSprite2D
 @onready var sword_hitbox : Area2D = $SwordHitbox
 @onready var sword_collider = $SwordHitbox/CollisionShape2D
 
 func _ready():
-	animation_tree.active = true
 	Globals.player_pos = self.global_position
 	Globals.player_max_health = max_health
 	Globals.player_health = health
@@ -52,11 +51,11 @@ func _physics_process(delta):
 	
 	# Change animation speed
 	if velocity:
-		$AnimationPlayer.speed_scale = 1 * ((max(abs(velocity.x), abs(velocity.y)))/200)
+		sprite.speed_scale = 1 * ((max(abs(velocity.x), abs(velocity.y)))/200)
 		
 	# Update sword hitbox to direction of player (flip_h)
 	# sword_hitbox.position.x = sword_hitbox.get_node("CollisionShape2D").shape.size.x * -(int($Sprite2D.flip_h) * 2 - 1)
-	sword_collider.position.x = (-1 * (int($Sprite2D.flip_h) * 2 - 1)) * (10 * sc_size())
+	sword_collider.position.x = (-1 * (int(sprite.flip_h) * 2 - 1)) * (10 * sc_size())
 	
 	move_and_slide()
 	
@@ -78,30 +77,26 @@ func swing():
 
 func update_animation_parameters():
 	# Updates parameters for the AnimationTree
-	if velocity == Vector2.ZERO:
-		animation_tree["parameters/conditions/idle"] = true
-		animation_tree["parameters/conditions/is_moving"] = false
+	if direction.x >= 0.8:
+		sprite.play("run-right")
+	elif direction.x <= -0.8:
+		sprite.play("run-left")
+	elif direction.y <= -0.8:
+		sprite.play("run-up")
+	elif direction.y >= 0.8:
+		sprite.play("run-down")
 	else:
-		animation_tree["parameters/conditions/idle"] = false
-		animation_tree["parameters/conditions/is_moving"] = true
-		
-		if turn_cooldown <= 0:
-			if velocity.x < 0:
-				$Sprite2D.flip_h = true
-			elif velocity.x > 0:
-				$Sprite2D.flip_h = false
-
-			
-	if Input.is_action_just_pressed("swing"):
-		swing()
-		animation_tree["parameters/conditions/swing"] = true
-		turn_cooldown = 0.8
-		if (get_local_mouse_position() - $Camera2D.position).x < 0:
-			$Sprite2D.flip_h = true
-		else:
-			$Sprite2D.flip_h = false
-	else:
-		animation_tree["parameters/conditions/swing"] = false
+		sprite.play("Idle")
+	#if Input.is_action_just_pressed("swing"):
+		#swing()
+		#animation_tree["parameters/conditions/swing"] = true
+		#turn_cooldown = 0.8
+		#if (get_local_mouse_position() - $Camera2D.position).x < 0:
+			#$Sprite2D.flip_h = true
+		#else:
+			#$Sprite2D.flip_h = false
+	#else:
+		#animation_tree["parameters/conditions/swing"] = false
 
 func set_stats():
 	self.knockback_strength = 100 + (get_upgrade_count("Bludgeon") * 20)
