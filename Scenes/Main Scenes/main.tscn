@@ -112,10 +112,7 @@ sources/1 = SubResource("TileSetAtlasSource_86bke")
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_y74ln")]
 position = Vector2(5672, 2055)
 motion_mode = 1
-speed = 180
 max_added_speed = 70
-knockback_strength = 150
-camera_influence = 8
 
 [node name="EnemyManager" type="Node" parent="." node_paths=PackedStringArray("tilemap")]
 script = ExtResource("2_us7lo")
