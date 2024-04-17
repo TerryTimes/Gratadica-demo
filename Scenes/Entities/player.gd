@@ -12,6 +12,7 @@ var turn_cooldown = 0 # Used for deciding sprite rotation
 var max_health = 100
 var grip_change_rate = 0.2 # Decides how powerful extendo grip is.
 var health = max_health
+var swinging = false
 
 @onready var camera = $Camera2D
 @onready var sprite = $AnimatedSprite2D
@@ -77,27 +78,31 @@ func swing():
 
 func update_animation_parameters():
 	# Updates parameters for the AnimationTree
-	if direction.x >= 0.8:
-		sprite.play("run-right")
-	elif direction.x <= -0.8:
-		sprite.play("run-left")
-	elif direction.y <= -0.8:
-		sprite.play("run-up")
-	elif direction.y >= 0.8:
-		sprite.play("run-down")
-	else:
-		sprite.play("Idle")
-	#if Input.is_action_just_pressed("swing"):
-		#swing()
-		#animation_tree["parameters/conditions/swing"] = true
-		#turn_cooldown = 0.8
-		#if (get_local_mouse_position() - $Camera2D.position).x < 0:
-			#$Sprite2D.flip_h = true
-		#else:
-			#$Sprite2D.flip_h = false
-	#else:
-		#animation_tree["parameters/conditions/swing"] = false
-
+		
+	if not swinging:
+		if direction.x >= 0.8:
+			sprite.play("run-right")
+		elif direction.x <= -0.8:
+			sprite.play("run-left")
+		elif direction.y <= -0.8:
+			sprite.play("run-up")
+		elif direction.y >= 0.8:
+			sprite.play("run-down")
+		else:
+			sprite.play("Idle")
+	if Input.is_action_just_pressed("swing"):
+		swinging = true
+		swing()
+		turn_cooldown = 0.8
+		if (get_local_mouse_position() - $Camera2D.position).x < 0:
+			sprite.play("attack-left")
+		elif (get_local_mouse_position() - $Camera2D.position).x > 0:
+			sprite.play("attack-right")
+		elif (get_local_mouse_position() - $Camera2D.position).y < 0:
+			sprite.play("attack-up")
+		elif (get_local_mouse_position() - $Camera2D.position).y > 0:
+			sprite.play("attack-down")
+			
 func set_stats():
 	self.knockback_strength = 100 + (get_upgrade_count("Bludgeon") * 20)
 	self.speed = 130 + (get_upgrade_count("Kai's Goat Hoof") * 14)
@@ -114,3 +119,8 @@ func gain_upgrade(upgrade):
 	upgrade_object['Count'] += 1
 	set_stats()
 	print(upgrade_object)
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if sprite.animation.split("-")[0] == 'attack':
+		swinging = false

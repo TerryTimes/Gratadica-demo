@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://b36o7hgh7nemf"]
+[gd_scene load_steps=16 format=3 uid="uid://b36o7hgh7nemf"]
 
 [ext_resource type="PackedScene" uid="uid://bi4ogytocaskk" path="res://Scenes/Entities/player.tscn" id="1_y74ln"]
 [ext_resource type="Script" path="res://Scenes/Main Scenes/Enemies.gd" id="2_us7lo"]
 [ext_resource type="Texture2D" uid="uid://cnn8si83elhh8" path="res://Assets/Environment/Tilesets/basictiles.png" id="2_x5tu5"]
 [ext_resource type="PackedScene" uid="uid://88ppvvfeemyx" path="res://hud.tscn" id="5_ew4ic"]
 [ext_resource type="PackedScene" uid="uid://b2603yi22hbd7" path="res://Scenes/Entities/spawner.tscn" id="5_h1pmk"]
-[ext_resource type="PackedScene" uid="uid://b0t6qagfweyi4" path="res://Scenes/Entities/Enemies/wizard.tscn" id="6_7eumf"]
 [ext_resource type="PackedScene" uid="uid://bbebivhpyt1q7" path="res://Scenes/Entities/upgrade.tscn" id="7_olejr"]
+[ext_resource type="Script" path="res://Scenes/Main Scenes/SoundRegions.gd" id="7_ri1eq"]
+[ext_resource type="AudioStream" uid="uid://c4jv85552l1rc" path="res://Assets/Audio/Music/Waning (1).mp3" id="8_cslvj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jfgwg"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -107,10 +108,13 @@ custom_data_layer_0/name = "Spawnable"
 custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_86bke")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jq25u"]
+size = Vector2(1995, 1336.5)
+
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_y74ln")]
-position = Vector2(7657, 4457)
+position = Vector2(5716, 2083)
 motion_mode = 1
 max_added_speed = 70
 
@@ -119,10 +123,6 @@ script = ExtResource("2_us7lo")
 tilemap = NodePath("../TileMap3")
 
 [node name="Enemies" type="Node" parent="EnemyManager"]
-
-[node name="Wizard" parent="EnemyManager/Enemies" instance=ExtResource("6_7eumf")]
-position = Vector2(3643, 524)
-kb_resistance = 0.7
 
 [node name="Timers" type="Node" parent="EnemyManager"]
 
@@ -158,5 +158,19 @@ layer_0/tile_data = PackedInt32Array(3670164, 65537, 1, 3670165, 65537, 1, 36701
 [node name="Upgrade" parent="." instance=ExtResource("7_olejr")]
 position = Vector2(5671, 1856)
 upgrade = "Extendo-grip"
+
+[node name="SoundRegions" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("7_ri1eq")
+player = NodePath("../Player")
+
+[node name="Area2D" type="Area2D" parent="SoundRegions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundRegions/Area2D"]
+position = Vector2(5751, 1789)
+shape = SubResource("RectangleShape2D_jq25u")
+debug_color = Color(0.686275, 0.294118, 1, 0.419608)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundRegions/Area2D"]
+stream = ExtResource("8_cslvj")
 
 [connection signal="timeout" from="EnemyManager/Timers/SpawnEnemy" to="EnemyManager" method="_on_spawn_enemy_timeout"]

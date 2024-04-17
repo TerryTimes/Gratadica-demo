@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var nav_agent = $NavigationAgent2D
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 @onready var attack_hitbox = get_node_or_null("AttackHitbox")
 @onready var attack_timer = $Timers/AttackTimer
 
@@ -77,6 +77,11 @@ func _physics_process(delta):
 	
 	# Update knockback
 	knockback = knockback - (knockback / 1.5) * delta
+	
+	if dir[0] < 0:
+		sprite.play("move-left")
+	elif dir[1] > 0:
+		sprite.play("move-right")
 	
 	move_and_slide()
 	
