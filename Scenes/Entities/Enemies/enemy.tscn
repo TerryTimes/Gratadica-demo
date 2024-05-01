@@ -1,19 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3xmb7jyjm03"]
+[gd_scene load_steps=17 format=3 uid="uid://d3xmb7jyjm03"]
 
 [ext_resource type="Script" path="res://Resources/EnemyAI/base_enemy.gd" id="1_b0d2q"]
-[ext_resource type="Texture2D" uid="uid://cdsuqqke3l3hr" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00009.png" id="2_k1xc0"]
-[ext_resource type="Texture2D" uid="uid://brklol2hpuygw" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00010.png" id="3_pqtfk"]
-[ext_resource type="Texture2D" uid="uid://dlouyv2pjexf0" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00011.png" id="4_h4wmh"]
-[ext_resource type="Texture2D" uid="uid://bguo32cqljc1l" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00012.png" id="5_hnq3m"]
-[ext_resource type="Texture2D" uid="uid://bvg4kt333sp0n" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00005.png" id="6_d34wb"]
-[ext_resource type="Texture2D" uid="uid://du78cha0pq84d" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00006.png" id="7_1kpxb"]
-[ext_resource type="Texture2D" uid="uid://c3y44u2fx3m1v" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00007.png" id="8_dhhdq"]
-[ext_resource type="Texture2D" uid="uid://kfvmdkh04wk4" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00008.png" id="9_vsl0b"]
-[ext_resource type="Texture2D" uid="uid://ckx6fgk0kc8re" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00003.png" id="10_iph23"]
-[ext_resource type="Texture2D" uid="uid://dyqrq60r2148k" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00004.png" id="11_swyax"]
-[ext_resource type="Texture2D" uid="uid://bu4opibktnm0h" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00001.png" id="12_ma7u1"]
-[ext_resource type="Texture2D" uid="uid://8gyi5545jlg1" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00002.png" id="13_uug0r"]
-[ext_resource type="AudioStream" uid="uid://bn1n5dpgijjrf" path="res://Assets/Audio/SFX/alert.mp3" id="14_i7xja"]
+[ext_resource type="Texture2D" uid="uid://ood0aj4khggn" path="res://Assets/Enemies/Mush Soldier/frame_00009.png" id="2_c4cgt"]
+[ext_resource type="Texture2D" uid="uid://v3agkv360iqu" path="res://Assets/Enemies/Mush Soldier/frame_00010.png" id="3_pugkt"]
+[ext_resource type="Texture2D" uid="uid://chr72h5twptmi" path="res://Assets/Enemies/Mush Soldier/frame_00011.png" id="4_mcncp"]
+[ext_resource type="Texture2D" uid="uid://btj8dedqnukvr" path="res://Assets/Enemies/Mush Soldier/frame_00012.png" id="5_7tbou"]
+[ext_resource type="Texture2D" uid="uid://n73ubpo0ihgm" path="res://Assets/Enemies/Mush Soldier/frame_00006.png" id="6_s6o43"]
+[ext_resource type="Texture2D" uid="uid://bafs2mjdqsk01" path="res://Assets/Enemies/Mush Soldier/frame_00007.png" id="7_6oipv"]
+[ext_resource type="Texture2D" uid="uid://dweh5teob0wjb" path="res://Assets/Enemies/Mush Soldier/frame_00008.png" id="8_gc5jv"]
+[ext_resource type="Texture2D" uid="uid://dv1tqiujgfmqm" path="res://Assets/Enemies/Mush Soldier/frame_00003.png" id="9_l6edb"]
+[ext_resource type="Texture2D" uid="uid://043yfbbqsspy" path="res://Assets/Enemies/Mush Soldier/frame_00004.png" id="10_40o4n"]
+[ext_resource type="Texture2D" uid="uid://dvsm0vadqagoc" path="res://Assets/Enemies/Mush Soldier/frame_00001.png" id="11_4wui5"]
+[ext_resource type="Texture2D" uid="uid://coj2jakr80f5r" path="res://Assets/Enemies/Mush Soldier/frame_00002.png" id="12_37glu"]
+[ext_resource type="AudioStream" uid="uid://cbqovrnx3w0ej" path="res://Assets/Audio/SFX/alert.mp3" id="13_c51ap"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n71su"]
 radius = 3.9906
@@ -25,16 +24,16 @@ size = Vector2(80, 54.3333)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_k1xc0")
+"texture": ExtResource("2_c4cgt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_pqtfk")
+"texture": ExtResource("3_pugkt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_h4wmh")
+"texture": ExtResource("4_mcncp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_hnq3m")
+"texture": ExtResource("5_7tbou")
 }],
 "loop": false,
 "name": &"attack-left",
@@ -42,16 +41,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_d34wb")
+"texture": ExtResource("6_s6o43")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_1kpxb")
+"texture": ExtResource("7_6oipv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_dhhdq")
+"texture": ExtResource("8_gc5jv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_vsl0b")
+"texture": ExtResource("2_c4cgt")
 }],
 "loop": false,
 "name": &"attack-right",
@@ -59,10 +58,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_iph23")
+"texture": ExtResource("9_l6edb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_swyax")
+"texture": ExtResource("10_40o4n")
 }],
 "loop": true,
 "name": &"move-left",
@@ -70,10 +69,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_ma7u1")
+"texture": ExtResource("11_4wui5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_uug0r")
+"texture": ExtResource("12_37glu")
 }],
 "loop": true,
 "name": &"move-right",
@@ -128,9 +127,9 @@ one_shot = true
 position = Vector2(-0.0105714, -8.99999)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_svnq5")
-animation = &"attack-left"
+animation = &"move-right"
 
 [node name="Alert" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("14_i7xja")
+stream = ExtResource("13_c51ap")
 
 [connection signal="timeout" from="Timers/PathTimer" to="." method="_on_path_timer_timeout"]

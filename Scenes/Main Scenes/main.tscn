@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bi4ogytocaskk" path="res://Scenes/Entities/player.tscn" id="1_y74ln"]
 [ext_resource type="Script" path="res://Scenes/Main Scenes/Enemies.gd" id="2_us7lo"]
-[ext_resource type="Texture2D" uid="uid://bam5r7lg8sfxa" path="res://Assets/Environment/Tilesets/Grid.png" id="4_71pm5"]
+[ext_resource type="Texture2D" uid="uid://cwbkbxpp0fdc5" path="res://Assets/Environment/Tilesets/Grid.png" id="4_71pm5"]
 [ext_resource type="PackedScene" uid="uid://88ppvvfeemyx" path="res://hud.tscn" id="5_ew4ic"]
 [ext_resource type="PackedScene" uid="uid://b2603yi22hbd7" path="res://Scenes/Entities/spawner.tscn" id="5_h1pmk"]
 [ext_resource type="PackedScene" uid="uid://bbebivhpyt1q7" path="res://Scenes/Entities/upgrade.tscn" id="7_olejr"]
 [ext_resource type="Script" path="res://Scenes/Main Scenes/SoundRegions.gd" id="7_ri1eq"]
-[ext_resource type="AudioStream" uid="uid://c4jv85552l1rc" path="res://Assets/Audio/Music/Waning (1).mp3" id="8_cslvj"]
+[ext_resource type="AudioStream" uid="uid://c3veffq3gjion" path="res://Assets/Audio/Music/Waning (1).mp3" id="8_cslvj"]
 [ext_resource type="PackedScene" uid="uid://d3xmb7jyjm03" path="res://Scenes/Entities/Enemies/enemy.tscn" id="9_d2m42"]
 
 [sub_resource type="Gradient" id="Gradient_wi2cb"]
@@ -412,15 +412,12 @@ tilemap = NodePath("../TileMap")
 
 [node name="Enemy" parent="EnemyManager/Enemies" instance=ExtResource("9_d2m42")]
 position = Vector2(-1, -50)
-scale = Vector2(1, 0.997814)
 
 [node name="Enemy2" parent="EnemyManager/Enemies" instance=ExtResource("9_d2m42")]
 position = Vector2(52, -203)
-scale = Vector2(1, 0.997814)
 
 [node name="Enemy3" parent="EnemyManager/Enemies" instance=ExtResource("9_d2m42")]
 position = Vector2(-52, -203)
-scale = Vector2(1, 0.997814)
 
 [node name="Timers" type="Node" parent="EnemyManager"]
 
@@ -532,9 +529,8 @@ position = Vector2(43, -25)
 scale = Vector2(0.373407, 0.373407)
 upgrade = "Extendo-grip"
 
-[node name="SoundRegions" type="Node" parent="." node_paths=PackedStringArray("player")]
+[node name="SoundRegions" type="Node" parent="."]
 script = ExtResource("7_ri1eq")
-player = NodePath("../Player")
 
 [node name="Area2D" type="Area2D" parent="SoundRegions"]
 
