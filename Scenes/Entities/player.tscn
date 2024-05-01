@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bi4ogytocaskk"]
+[gd_scene load_steps=44 format=3 uid="uid://bi4ogytocaskk"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_ntf8a"]
 [ext_resource type="Texture2D" uid="uid://cqqu16eegx0kq" path="res://frame_00001.png" id="3_ctykd"]
@@ -33,9 +33,12 @@
 [ext_resource type="Texture2D" uid="uid://b6bjpnpdhkyc1" path="res://Assets/Player/attack/frame_00006.png" id="19_iw077"]
 [ext_resource type="Texture2D" uid="uid://dxcgbqv7ctsxh" path="res://Assets/Player/attack/frame_00007.png" id="20_imkqt"]
 [ext_resource type="Texture2D" uid="uid://cp78vbh3smue2" path="res://Assets/Player/attack/frame_00008.png" id="21_bb0l4"]
+[ext_resource type="AudioStream" uid="uid://81hbbpselqnu" path="res://Assets/Audio/SFX/swing.mp3" id="34_ojp7l"]
+[ext_resource type="AudioStream" uid="uid://d2ew8ey5fanno" path="res://Assets/Audio/SFX/hit.mp3" id="35_7wup1"]
+[ext_resource type="AudioStream" uid="uid://c6c5ieeqkvdjp" path="res://Assets/Audio/Music/A bitter end.mp3" id="36_bc2uj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvc8v"]
-size = Vector2(18, 21)
+size = Vector2(4, 6)
 
 [sub_resource type="Gradient" id="Gradient_vx83r"]
 offsets = PackedFloat32Array(0, 0.60515, 0.708154, 1)
@@ -48,7 +51,7 @@ fill_from = Vector2(0.507645, 0.46789)
 fill_to = Vector2(0.825688, 0.155963)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyj3p"]
-size = Vector2(20, 48)
+size = Vector2(10.2941, 16)
 
 [sub_resource type="Curve" id="Curve_4fi2d"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -218,13 +221,14 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ntf8a")
+max_added_speed = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -10.5)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_qvc8v")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
-zoom = Vector2(3, 3)
+zoom = Vector2(9, 9)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(2.99998, -22)
@@ -239,10 +243,11 @@ collision_mask = 2
 metadata/attacking = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox"]
-position = Vector2(10, -24)
+position = Vector2(2.19135e-07, -8)
 shape = SubResource("RectangleShape2D_pyj3p")
 
 [node name="Trail" type="Line2D" parent="."]
+visible = false
 show_behind_parent = true
 points = PackedVector2Array(-91, -21, -49, -47, 2, -26)
 width = 15.0
@@ -256,9 +261,24 @@ antialiased = true
 script = ExtResource("5_7spnu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -23)
-scale = Vector2(0.519444, 0.46)
+position = Vector2(0, -8)
+scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_rqr62")
 animation = &"attack-up"
 
+[node name="Swing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_ojp7l")
+volume_db = -11.277
+
+[node name="SwingCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("35_7wup1")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("36_bc2uj")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="SwingCooldown" to="." method="_on_swing_cooldown_timeout"]

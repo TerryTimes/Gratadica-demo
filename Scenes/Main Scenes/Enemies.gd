@@ -35,3 +35,8 @@ func _on_spawn_enemy_timeout():
 	#spawn_enemy("test")
 	if get_valid_spawner():
 		spawn_enemy(base_enemy, get_valid_spawner().position)
+
+
+func _on_player_died():
+	for enemy in enemies.get_children():
+		enemy.speed = 0

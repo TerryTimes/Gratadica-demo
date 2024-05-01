@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d3xmb7jyjm03"]
+[gd_scene load_steps=18 format=3 uid="uid://d3xmb7jyjm03"]
 
 [ext_resource type="Script" path="res://Resources/EnemyAI/base_enemy.gd" id="1_b0d2q"]
 [ext_resource type="Texture2D" uid="uid://cdsuqqke3l3hr" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00009.png" id="2_k1xc0"]
@@ -13,12 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://dyqrq60r2148k" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00004.png" id="11_swyax"]
 [ext_resource type="Texture2D" uid="uid://bu4opibktnm0h" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00001.png" id="12_ma7u1"]
 [ext_resource type="Texture2D" uid="uid://8gyi5545jlg1" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00002.png" id="13_uug0r"]
+[ext_resource type="AudioStream" uid="uid://bn1n5dpgijjrf" path="res://Assets/Audio/SFX/alert.mp3" id="14_i7xja"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n71su"]
-radius = 14.0357
+radius = 3.9906
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t6mc7"]
-size = Vector2(44, 42)
+size = Vector2(80, 54.3333)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_svnq5"]
 animations = [{
@@ -35,7 +36,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_hnq3m")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack-left",
 "speed": 9.0
 }, {
@@ -52,7 +53,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_vsl0b")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack-right",
 "speed": 5.0
 }, {
@@ -80,6 +81,8 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+rotation = 0.0011746
+scale = Vector2(1, 0.997814)
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
@@ -87,11 +90,16 @@ slide_on_ceiling = false
 wall_min_slide_angle = 0.0
 safe_margin = 0.04
 script = ExtResource("1_b0d2q")
-health = 30
+speed = 40
+health = 45
+kb_resistance = 0.8
+stop_distance = 0.2
+aggression_radius = 40
 damage = 5
+attack_cooldown = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -18)
+position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_n71su")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -102,7 +110,8 @@ radius = 67.32
 [node name="AttackHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
-position = Vector2(0, -21)
+position = Vector2(0, -9)
+scale = Vector2(0.220094, 0.3)
 shape = SubResource("RectangleShape2D_t6mc7")
 debug_color = Color(0.894118, 0.290196, 0.352941, 0.419608)
 
@@ -113,14 +122,15 @@ wait_time = 0.147
 autostart = true
 
 [node name="AttackTimer" type="Timer" parent="Timers"]
-wait_time = 0.526
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -19)
-scale = Vector2(0.43, 0.43)
+position = Vector2(-0.0105714, -8.99999)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_svnq5")
-animation = &"move-right"
-frame_progress = 0.428355
+animation = &"attack-left"
+
+[node name="Alert" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_i7xja")
 
 [connection signal="timeout" from="Timers/PathTimer" to="." method="_on_path_timer_timeout"]
