@@ -56,7 +56,7 @@ swing={
 
 [navigation]
 
-2d/default_edge_connection_margin=32
+2d/default_edge_connection_margin=12
 
 [rendering]
 

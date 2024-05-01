@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var nav_agent = $NavigationAgent2D
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 @onready var attack_hitbox = get_node_or_null("AttackHitbox")
 @onready var attack_timer = $Timers/AttackTimer
 
@@ -18,6 +18,9 @@ extends CharacterBody2D
 var pushback_distance = 25
 var knockback = Vector2()
 var iseconds = 0
+var dir
+var attacking = false
+var alerted = false
 
 func _ready():
 	nav_agent.path_desired_distance = speed / 5.0
@@ -51,25 +54,34 @@ func _process(delta):
 	iseconds -= 1 * delta
 	if iseconds < 0:
 		iseconds = 0
-		
+
 func attack():
-	if get_player_distance() <= speed / stop_distance:
-		for object in attack_hitbox.get_overlapping_bodies():
-			if object.is_in_group("player"):
-				object.hit(damage, self.global_position.direction_to(object.position) * damage_knockback)
-				
-		
-		
+	attacking = true
+	if dir[0] < 0:
+		sprite.play("attack-left")
+	else:
+		sprite.play("attack-right")
+	for object in attack_hitbox.get_overlapping_bodies():
+		if object.is_in_group("player"):
+			object.hit(damage, self.global_position.direction_to(object.position) * damage_knockback)
+	attacking = false
 
 func _physics_process(delta):
 	# Moves along agent path
-	var dir = global_position.direction_to(nav_agent.get_next_path_position())
+	dir = global_position.direction_to(nav_agent.get_next_path_position())
+	var distance = get_player_distance()
 	var can_move = 1
 	
-	if get_player_distance() <= speed / stop_distance:
+	if not alerted and distance <= aggression_radius:
+		$Alert.play()
+		alerted = true
+	elif alerted and distance > aggression_radius * 2:
+		alerted = false
+	
+	if not alerted:
 		can_move = 0
 	
-	if attack_timer.is_stopped():
+	if attack_timer.is_stopped() and distance <= speed * stop_distance and alerted:
 		attack()
 		attack_timer.start()
 	
@@ -78,14 +90,21 @@ func _physics_process(delta):
 	# Update knockback
 	knockback = knockback - (knockback / 1.5) * delta
 	
-	move_and_slide()
+	if (not (sprite.animation == "attack-left" or sprite.animation == "attack-right")) or not sprite.is_playing():
+		if dir[0] < 0:
+			sprite.play("move-left")
+		elif dir[0] > 0:
+			sprite.play("move-right")
 	
+	move_and_slide()
+
 func make_path() -> void:
 	# Generates a new path for the agent
 	nav_agent.target_position = Globals.player_pos
 
 func _on_path_timer_timeout():
 	make_path()
-	
-	
-	
+
+
+func _on_attack_timer_timeout():
+	print('W')

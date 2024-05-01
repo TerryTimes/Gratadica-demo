@@ -1,14 +1,88 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3xmb7jyjm03"]
+[gd_scene load_steps=18 format=3 uid="uid://d3xmb7jyjm03"]
 
 [ext_resource type="Script" path="res://Resources/EnemyAI/base_enemy.gd" id="1_b0d2q"]
-[ext_resource type="Texture2D" uid="uid://c43742pvi1eny" path="res://icon.svg" id="2_y1v3r"]
+[ext_resource type="Texture2D" uid="uid://cdsuqqke3l3hr" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00009.png" id="2_k1xc0"]
+[ext_resource type="Texture2D" uid="uid://brklol2hpuygw" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00010.png" id="3_pqtfk"]
+[ext_resource type="Texture2D" uid="uid://dlouyv2pjexf0" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00011.png" id="4_h4wmh"]
+[ext_resource type="Texture2D" uid="uid://bguo32cqljc1l" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00012.png" id="5_hnq3m"]
+[ext_resource type="Texture2D" uid="uid://bvg4kt333sp0n" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00005.png" id="6_d34wb"]
+[ext_resource type="Texture2D" uid="uid://du78cha0pq84d" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00006.png" id="7_1kpxb"]
+[ext_resource type="Texture2D" uid="uid://c3y44u2fx3m1v" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00007.png" id="8_dhhdq"]
+[ext_resource type="Texture2D" uid="uid://kfvmdkh04wk4" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00008.png" id="9_vsl0b"]
+[ext_resource type="Texture2D" uid="uid://ckx6fgk0kc8re" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00003.png" id="10_iph23"]
+[ext_resource type="Texture2D" uid="uid://dyqrq60r2148k" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00004.png" id="11_swyax"]
+[ext_resource type="Texture2D" uid="uid://bu4opibktnm0h" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00001.png" id="12_ma7u1"]
+[ext_resource type="Texture2D" uid="uid://8gyi5545jlg1" path="res://Scenes/Entities/Enemies/Mush-solider/frame_00002.png" id="13_uug0r"]
+[ext_resource type="AudioStream" uid="uid://bn1n5dpgijjrf" path="res://Assets/Audio/SFX/alert.mp3" id="14_i7xja"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n71su"]
+radius = 3.9906
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t6mc7"]
-size = Vector2(44, 42)
+size = Vector2(80, 54.3333)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_svnq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k1xc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pqtfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h4wmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hnq3m")
+}],
+"loop": false,
+"name": &"attack-left",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_d34wb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1kpxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dhhdq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vsl0b")
+}],
+"loop": false,
+"name": &"attack-right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_iph23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_swyax")
+}],
+"loop": true,
+"name": &"move-left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ma7u1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_uug0r")
+}],
+"loop": true,
+"name": &"move-right",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+rotation = 0.0011746
+scale = Vector2(1, 0.997814)
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
@@ -16,16 +90,17 @@ slide_on_ceiling = false
 wall_min_slide_angle = 0.0
 safe_margin = 0.04
 script = ExtResource("1_b0d2q")
-health = 30
+speed = 40
+health = 45
+kb_resistance = 0.8
+stop_distance = 0.2
+aggression_radius = 40
 damage = 5
+attack_cooldown = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_n71su")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(7.15256e-07, 0)
-scale = Vector2(0.15625, 0.15625)
-texture = ExtResource("2_y1v3r")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 140.0
@@ -35,6 +110,8 @@ radius = 67.32
 [node name="AttackHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(0, -9)
+scale = Vector2(0.220094, 0.3)
 shape = SubResource("RectangleShape2D_t6mc7")
 debug_color = Color(0.894118, 0.290196, 0.352941, 0.419608)
 
@@ -45,7 +122,15 @@ wait_time = 0.147
 autostart = true
 
 [node name="AttackTimer" type="Timer" parent="Timers"]
-wait_time = 0.526
 one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.0105714, -8.99999)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_svnq5")
+animation = &"attack-left"
+
+[node name="Alert" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_i7xja")
 
 [connection signal="timeout" from="Timers/PathTimer" to="." method="_on_path_timer_timeout"]
