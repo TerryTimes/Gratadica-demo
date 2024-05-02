@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccmyttj3gfer1"]
+
+[ext_resource type="Texture2D" uid="uid://dssd8lnf4erc6" path="res://Assets/Environment/Scene Tiles/bush.png" id="1_yyl6i"]
+[ext_resource type="Script" path="res://Assets/Environment/Scene Tiles/bush.gd" id="2_m4u1s"]
+[ext_resource type="AudioStream" uid="uid://d2iekesq4l3fr" path="res://Assets/Audio/SFX/bush.mp3" id="3_dhtqi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2x6h"]
+
+[node name="StaticBody2D" type="StaticBody2D" groups=["Enemies"]]
+collision_layer = 3
+script = ExtResource("2_m4u1s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s2x6h")
+
+[node name="Bush" type="Sprite2D" parent="." groups=["Enemies"]]
+texture = ExtResource("1_yyl6i")
+
+[node name="Break" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dhtqi")
+
+[connection signal="finished" from="Break" to="." method="_on_break_finished"]

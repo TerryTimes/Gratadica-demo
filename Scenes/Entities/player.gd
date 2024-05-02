@@ -68,6 +68,11 @@ func _physics_process(delta) -> void:
 	
 	# Update camera between the player and cursor
 	camera.position = self.position / camera_influence + self.position.direction_to(get_local_mouse_position()) * (self.position.distance_to(get_local_mouse_position()) / camera_influence)
+	var dir = get_local_mouse_position()[0]
+	if dir > 0:
+		sword_collider.position.x = (sword_hitbox.get_node("CollisionShape2D").shape.size.x / 2) * 1
+	elif dir < 0:
+		sword_collider.position.x = (sword_hitbox.get_node("CollisionShape2D").shape.size.x / 2) * -1
 
 func hit(damage, _knockback = Vector2.ZERO) -> void:
 	health = max(0, health - damage)
@@ -99,19 +104,14 @@ func update_animation_parameters():
 	if not swinging:
 		if direction.x >= 0.8:
 			sprite.play("run-right")
-			sword_collider.position.x = (sword_hitbox.get_node("CollisionShape2D").shape.size.x / 2) * 1
 		elif direction.x <= -0.8:
 			sprite.play("run-left")
-			sword_collider.position.x = (sword_hitbox.get_node("CollisionShape2D").shape.size.x / 2) * -1
 		elif direction.y <= -0.8:
 			sprite.play("run-up")
-			sword_collider.position.x = 0
 		elif direction.y >= 0.8:
 			sprite.play("run-down")
-			sword_collider.position.x = 0
 		else:
 			sprite.play("Idle")
-			sword_collider.position.x = 0
 	if Input.is_action_just_pressed("swing") and $SwingCooldown.is_stopped():
 		swinging = true
 		$SwingCooldown.start()

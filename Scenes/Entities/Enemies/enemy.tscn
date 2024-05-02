@@ -58,6 +58,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("11_4wui5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_37glu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("9_l6edb")
 }, {
 "duration": 1.0,
@@ -127,7 +138,8 @@ one_shot = true
 position = Vector2(-0.0105714, -8.99999)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_svnq5")
-animation = &"move-right"
+animation = &"idle"
+frame_progress = 0.49264
 
 [node name="Alert" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_c51ap")

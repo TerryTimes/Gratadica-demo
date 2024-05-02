@@ -90,11 +90,14 @@ func _physics_process(delta):
 	# Update knockback
 	knockback = knockback - (knockback / 1.5) * delta
 	
+	
 	if (not (sprite.animation == "attack-left" or sprite.animation == "attack-right")) or not sprite.is_playing():
-		if dir[0] < 0:
+		if velocity[0] < 0:
 			sprite.play("move-left")
-		elif dir[0] > 0:
+		elif velocity[0] > 0:
 			sprite.play("move-right")
+		else:
+			sprite.play("idle")
 	
 	move_and_slide()
 

@@ -1,0 +1,151 @@
+[gd_scene load_steps=19 format=3 uid="uid://cswtxim7ovqji"]
+
+[ext_resource type="Script" path="res://Resources/EnemyAI/base_enemy.gd" id="1_hnj2x"]
+[ext_resource type="Texture2D" uid="uid://brtf7bsgtohxc" path="res://Assets/Enemies/Popup Shroom/frame_00005.png" id="2_6wpu2"]
+[ext_resource type="Texture2D" uid="uid://dlndrwouype3p" path="res://Assets/Enemies/Popup Shroom/frame_00006.png" id="3_q2w5r"]
+[ext_resource type="Texture2D" uid="uid://dd11dhninjvoa" path="res://Assets/Enemies/Popup Shroom/frame_00007.png" id="4_3f0wj"]
+[ext_resource type="Texture2D" uid="uid://c6e4mhm88g2kf" path="res://Assets/Enemies/Popup Shroom/frame_00008.png" id="5_jmdte"]
+[ext_resource type="Texture2D" uid="uid://bkmjehnbc5j75" path="res://Assets/Enemies/Popup Shroom/frame_00009.png" id="6_p6xwu"]
+[ext_resource type="Texture2D" uid="uid://bave7xqgu0pyu" path="res://Assets/Enemies/Popup Shroom/frame_00010.png" id="7_fvkbh"]
+[ext_resource type="Texture2D" uid="uid://b53l5m84gc0s7" path="res://Assets/Enemies/Popup Shroom/frame_00011.png" id="8_nuvn0"]
+[ext_resource type="Texture2D" uid="uid://ba1opyxr0gaii" path="res://Assets/Enemies/Popup Shroom/frame_00012.png" id="9_acgpb"]
+[ext_resource type="Texture2D" uid="uid://hkt8gsoyaf2h" path="res://Assets/Enemies/Popup Shroom/frame_00013.png" id="10_1l8qk"]
+[ext_resource type="Texture2D" uid="uid://de654bs7yhcd2" path="res://Assets/Enemies/Popup Shroom/frame_00001.png" id="11_d78dq"]
+[ext_resource type="Texture2D" uid="uid://e3euvpfqi02l" path="res://Assets/Enemies/Popup Shroom/frame_00002.png" id="12_lnaj6"]
+[ext_resource type="AudioStream" uid="uid://cbqovrnx3w0ej" path="res://Assets/Audio/SFX/alert.mp3" id="13_8uerc"]
+[ext_resource type="Texture2D" uid="uid://ckmjpve433c1j" path="res://Assets/Enemies/Popup Shroom/frame_00003.png" id="13_qre11"]
+[ext_resource type="Texture2D" uid="uid://cfehi8qv5dxco" path="res://Assets/Enemies/Popup Shroom/frame_00004.png" id="14_omy5v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n71su"]
+radius = 3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6mc7"]
+size = Vector2(80, 28.3954)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_svnq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6wpu2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q2w5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3f0wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jmdte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p6xwu")
+}],
+"loop": false,
+"name": &"attack-left",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_fvkbh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nuvn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_acgpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1l8qk")
+}],
+"loop": false,
+"name": &"attack-right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_d78dq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lnaj6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_qre11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_omy5v")
+}],
+"loop": true,
+"name": &"move-left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_qre11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_omy5v")
+}],
+"loop": true,
+"name": &"move-right",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+rotation = 0.0011746
+scale = Vector2(1, 0.997814)
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0
+safe_margin = 0.04
+script = ExtResource("1_hnj2x")
+speed = 45
+health = 20
+kb_resistance = 0.9
+stop_distance = 0.15
+aggression_radius = 30
+damage = 3
+attack_cooldown = 0.8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.0046984, -4.00876)
+shape = SubResource("CircleShape2D_n71su")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 140.0
+target_desired_distance = 111.91
+radius = 67.32
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(-0.0046984, -4.25931)
+scale = Vector2(0.220094, 0.3)
+shape = SubResource("RectangleShape2D_t6mc7")
+debug_color = Color(0.894118, 0.290196, 0.352941, 0.419608)
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="PathTimer" type="Timer" parent="Timers"]
+wait_time = 0.147
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.0035238, -3.00657)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_svnq5")
+animation = &"idle"
+
+[node name="Alert" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_8uerc")
+
+[connection signal="timeout" from="Timers/PathTimer" to="." method="_on_path_timer_timeout"]

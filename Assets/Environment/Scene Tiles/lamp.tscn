@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckuhol3st1jgu"]
+
+[ext_resource type="Texture2D" uid="uid://pngiadj343s1" path="res://Assets/Environment/Scene Tiles/lamp.png" id="1_fyr6e"]
+
+[sub_resource type="Gradient" id="Gradient_wi2cb"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tur6k"]
+gradient = SubResource("Gradient_wi2cb")
+fill = 1
+fill_from = Vector2(0.501529, 0.474006)
+fill_to = Vector2(0.856269, 0.140673)
+
+[node name="Lamp" type="Sprite2D"]
+texture = ExtResource("1_fyr6e")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(0, -7)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_tur6k")
