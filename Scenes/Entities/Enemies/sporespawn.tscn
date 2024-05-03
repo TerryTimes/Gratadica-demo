@@ -1,0 +1,187 @@
+[gd_scene load_steps=26 format=3 uid="uid://t1rw7ys6yrl8"]
+
+[ext_resource type="Script" path="res://Resources/EnemyAI/base_enemy.gd" id="1_a8q0w"]
+[ext_resource type="Texture2D" uid="uid://2pju5uhhxyse" path="res://Assets/Enemies/sporespawn/Spore spawn left/Spore spawn smek left-1.png.png" id="2_t1exh"]
+[ext_resource type="Texture2D" uid="uid://b3b6vjidx8b3q" path="res://Assets/Enemies/sporespawn/Spore spawn left/Spore spawn smek left-2.png.png" id="3_crbqv"]
+[ext_resource type="Texture2D" uid="uid://bbxgwa7f5cfdb" path="res://Assets/Enemies/sporespawn/Spore spawn left/Spore spawn smek left-3.png.png" id="4_mhehd"]
+[ext_resource type="Texture2D" uid="uid://bqme5v8c23aht" path="res://Assets/Enemies/sporespawn/Spore spawn left/Spore spawn smek left-4.png.png" id="5_khhya"]
+[ext_resource type="Texture2D" uid="uid://bpvgydvbl1kvv" path="res://Assets/Enemies/sporespawn/Spore spawn right/Spore spawn smek right-1.png.png" id="6_2hado"]
+[ext_resource type="Texture2D" uid="uid://b1k3owt38hltq" path="res://Assets/Enemies/sporespawn/Spore spawn right/Spore spawn smek right-2.png.png" id="7_338yu"]
+[ext_resource type="Texture2D" uid="uid://bdxlv532cpw34" path="res://Assets/Enemies/sporespawn/Spore spawn right/Spore spawn smek right-3.png.png" id="8_0811p"]
+[ext_resource type="Texture2D" uid="uid://b6m38s2fkrx1d" path="res://Assets/Enemies/sporespawn/Spore spawn right/Spore spawn smek right-4.png.png" id="9_dssi8"]
+[ext_resource type="Texture2D" uid="uid://dghgovdpbihq5" path="res://Assets/Enemies/sporespawn/Spore spawn idle/Spore spawn idle0.png" id="9_jk23x"]
+[ext_resource type="Texture2D" uid="uid://deiq8yswprdru" path="res://Assets/Enemies/sporespawn/Spore spawn idle/Spore spawn idle1.png" id="10_m827s"]
+[ext_resource type="Texture2D" uid="uid://brheerqlouajf" path="res://Assets/Enemies/sporespawn/Spore spawn idle/Spore spawn idle2.png" id="11_gkxk8"]
+[ext_resource type="Texture2D" uid="uid://dyhbpmudlooni" path="res://Assets/Enemies/sporespawn/Spore spawn idle/Spore spawn idle3.png" id="12_piabk"]
+[ext_resource type="AudioStream" uid="uid://cbqovrnx3w0ej" path="res://Assets/Audio/SFX/alert.mp3" id="13_srj1g"]
+[ext_resource type="Texture2D" uid="uid://b1dsrgtd7ct45" path="res://Assets/Enemies/sporespawn/Spore spawn left/Spore Spawn Left_0.png" id="14_goh02"]
+[ext_resource type="Texture2D" uid="uid://vn3rwub1d741" path="res://Assets/Enemies/sporespawn/Spore spawn left/Spore Spawn Left_1.png" id="15_bj3sh"]
+[ext_resource type="Texture2D" uid="uid://xaurj00h65te" path="res://Assets/Enemies/sporespawn/Spore spawn left/Spore Spawn Left_2.png" id="16_rfcdj"]
+[ext_resource type="Texture2D" uid="uid://bdq100hjr1klm" path="res://Assets/Enemies/sporespawn/Spore spawn left/Spore Spawn Left_3.png" id="17_3i2dh"]
+[ext_resource type="Texture2D" uid="uid://b8qolxhhul5uu" path="res://Assets/Enemies/sporespawn/Spore spawn right/Spore Spawn Right-1.png.png" id="18_7grq5"]
+[ext_resource type="Texture2D" uid="uid://dfx0xp0bh71pr" path="res://Assets/Enemies/sporespawn/Spore spawn right/Spore Spawn Right-2.png.png" id="19_8lyus"]
+[ext_resource type="Texture2D" uid="uid://dffb2wwuajj0s" path="res://Assets/Enemies/sporespawn/Spore spawn right/Spore Spawn Right-3.png.png" id="20_i32x2"]
+[ext_resource type="Texture2D" uid="uid://d12svie4n3nhm" path="res://Assets/Enemies/sporespawn/Spore spawn right/Spore Spawn Right-4.png.png" id="21_jwm66"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n71su"]
+radius = 3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6mc7"]
+size = Vector2(36.3534, 30.573)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_svnq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t1exh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_crbqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mhehd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_khhya")
+}],
+"loop": false,
+"name": &"attack-left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_2hado")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_338yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0811p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dssi8")
+}],
+"loop": false,
+"name": &"attack-right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_jk23x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m827s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gkxk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_piabk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_goh02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_bj3sh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rfcdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3i2dh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rfcdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_bj3sh")
+}],
+"loop": true,
+"name": &"move-left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_7grq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8lyus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_i32x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jwm66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_i32x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8lyus")
+}],
+"loop": true,
+"name": &"move-right",
+"speed": 10.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+rotation = 0.0011746
+scale = Vector2(1, 0.997814)
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0
+safe_margin = 0.04
+script = ExtResource("1_a8q0w")
+speed = 50
+health = 10
+kb_resistance = 0.6
+stop_distance = 0.2
+aggression_radius = 50
+damage = 3
+attack_cooldown = 0.4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.0046984, -4.00876)
+shape = SubResource("CircleShape2D_n71su")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 140.0
+target_desired_distance = 111.91
+radius = 67.32
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(-0.00528553, -5.01095)
+scale = Vector2(0.220094, 0.3)
+shape = SubResource("RectangleShape2D_t6mc7")
+debug_color = Color(0.894118, 0.290196, 0.352941, 0.419608)
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="PathTimer" type="Timer" parent="Timers"]
+wait_time = 0.147
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.0046984, -4.00876)
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_svnq5")
+animation = &"attack-left"
+frame = 3
+frame_progress = 1.0
+
+[node name="Alert" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_srj1g")
+
+[connection signal="timeout" from="Timers/PathTimer" to="." method="_on_path_timer_timeout"]

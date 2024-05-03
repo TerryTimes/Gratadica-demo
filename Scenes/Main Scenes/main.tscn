@@ -635,7 +635,7 @@ texture = SubResource("GradientTexture2D_rx5il")
 [node name="hud" parent="." instance=ExtResource("5_ew4ic")]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_y74ln")]
-position = Vector2(-2, -56)
+position = Vector2(4, 12)
 speed = 50
 
 [connection signal="timeout" from="EnemyManager/Timers/SpawnEnemy" to="EnemyManager" method="_on_spawn_enemy_timeout"]
