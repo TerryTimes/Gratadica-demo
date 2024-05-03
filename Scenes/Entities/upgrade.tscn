@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbebivhpyt1q7"]
+[gd_scene load_steps=7 format=3 uid="uid://bbebivhpyt1q7"]
 
 [ext_resource type="Script" path="res://Upgrade.gd" id="1_omuho"]
 [ext_resource type="Texture2D" uid="uid://c43742pvi1eny" path="res://icon.svg" id="2_qvjib"]
@@ -7,6 +7,16 @@
 radius = 38.0526
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csrw0"]
+
+[sub_resource type="Gradient" id="Gradient_0guca"]
+offsets = PackedFloat32Array(0, 0.619377, 0.768166, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.19918, 0.19918, 0.19918, 1, 0.0692042, 0.0692042, 0.0692042, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0xh2x"]
+gradient = SubResource("Gradient_0guca")
+fill = 1
+fill_from = Vector2(0.538462, 0.482906)
+fill_to = Vector2(0.846154, 0.149573)
 
 [node name="Upgrade" type="StaticBody2D"]
 script = ExtResource("1_omuho")
@@ -22,5 +32,11 @@ shape = SubResource("CircleShape2D_bva6n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_csrw0")
+disabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1.5, 1.5)
+energy = 0.44
+texture = SubResource("GradientTexture2D_0xh2x")
 
 [connection signal="body_shape_entered" from="PickupRange" to="." method="_on_pickup_range_body_shape_entered"]

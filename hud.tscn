@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://88ppvvfeemyx"]
+[gd_scene load_steps=5 format=3 uid="uid://88ppvvfeemyx"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_mjktb"]
+[ext_resource type="Texture2D" uid="uid://c43742pvi1eny" path="res://icon.svg" id="2_xk0ea"]
 
 [sub_resource type="Gradient" id="Gradient_20g0t"]
 colors = PackedColorArray(0.381275, 0.490642, 0.970641, 1, 0.339396, 0.443368, 0.947239, 1)
@@ -20,7 +21,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
 size_flags_vertical = 10
 
 [node name="healthbar" type="TextureProgressBar" parent="."]
@@ -38,3 +38,39 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 value = 70.0
 texture_progress = SubResource("GradientTexture2D_wuhyv")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+anchors_preset = -1
+anchor_right = 0.288
+anchor_bottom = 0.161
+offset_right = 0.199982
+offset_bottom = 0.0999908
+
+[node name="Title2" type="RichTextLabel" parent="Panel"]
+clip_contents = false
+layout_mode = 2
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 321.0
+offset_bottom = 28.0
+text = "UpgradeName"
+fit_content = true
+
+[node name="Title3" type="RichTextLabel" parent="Panel"]
+clip_contents = false
+layout_mode = 2
+offset_left = 5.0
+offset_top = 47.0
+offset_right = 320.0
+offset_bottom = 113.0
+text = "Description"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 6.0
+offset_right = 451.0
+offset_bottom = 134.0
+texture = ExtResource("2_xk0ea")

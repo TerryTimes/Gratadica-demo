@@ -60,12 +60,12 @@ func _physics_process(delta) -> void:
 	# Update sword hitbox to direction of player (flip_h)
 	# sword_hitbox.position.x = sword_hitbox.get_node("CollisionShape2D").shape.size.x * -(int($Sprite2D.flip_h) * 2 - 1)
 	# sword_collider.position.x = (-1 * (int(sprite.flip_h) * 2 - 1)) * (10 * sc_size())
-	
+
 	move_and_slide()
-	
+
 	Globals.player_pos = self.global_position
 	Globals.player_health = health
-	
+
 	# Update camera between the player and cursor
 	camera.position = self.position / camera_influence + self.position.direction_to(get_local_mouse_position()) * (self.position.distance_to(get_local_mouse_position()) / camera_influence)
 	var dir = get_local_mouse_position()[0]
@@ -94,7 +94,8 @@ func swing() -> void:
 	var bodies = $SwordHitbox.get_overlapping_bodies()
 	for body in bodies:
 		if body.is_in_group("Enemies"):
-			body.hit(10, self.position.direction_to(body.position) * knockback_strength)
+			var kb_dir = Vector2(get_local_mouse_position().x, 0).normalized()
+			body.hit(10, kb_dir * knockback_strength)
 			self.health = min(self.max_health, self.health + get_upgrade_count('Leech'))
 
 func update_animation_parameters():
