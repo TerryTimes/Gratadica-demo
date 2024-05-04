@@ -11,10 +11,8 @@ func spawn_enemy() -> void:
 	enemy.global_position = global_position
 	spawn_count -= 1
 
-	if spawn_count < 0:
-		print("All out!")
-		queue_free()
-
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	if not enemy:
+		if spawn_count < 0:
+			queue_free()
 		spawn_enemy()

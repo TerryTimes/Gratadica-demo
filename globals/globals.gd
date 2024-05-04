@@ -29,7 +29,7 @@ var upgrades = {
 	},
 	"Extendo-grip": {
 		'Description': 'Increases weapon range',
-		'Lore': "",
+		'Lore': "Loong looong maaaaaaan!",
 		'Count': 0
 	}
 }

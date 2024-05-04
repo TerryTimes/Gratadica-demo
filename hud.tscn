@@ -74,3 +74,33 @@ offset_top = 6.0
 offset_right = 451.0
 offset_bottom = 134.0
 texture = ExtResource("2_xk0ea")
+
+[node name="Panel2" type="Panel" parent="."]
+anchors_preset = -1
+anchor_right = 0.34875
+anchor_bottom = 0.164
+offset_bottom = 0.399998
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -279.0
+offset_right = 115.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Upgrade Name"
+
+[node name="TextureRect" type="TextureRect" parent="Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.741935
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_xk0ea")
+metadata/_edit_use_anchors_ = true

@@ -1,6 +1,9 @@
 extends CharacterBody2D
+class_name Player
 
 signal died
+signal health_change
+signal upgrade_collect
 
 @export var speed:int
 @export var max_added_speed = 50
@@ -76,6 +79,7 @@ func _physics_process(delta) -> void:
 
 func hit(damage, _knockback = Vector2.ZERO) -> void:
 	health = max(0, health - damage)
+	health_change.emit()
 	if health <= 0:
 		sprite.visible = false
 		speed = 0
@@ -129,7 +133,7 @@ func update_animation_parameters():
 			
 func set_stats():
 	self.knockback_strength = 100 + (get_upgrade_count("Bludgeon") * 20)
-	self.speed = speed + (get_upgrade_count("Kai's Goat Hoof") * (speed/8.0))
+	self.speed = speed + (get_upgrade_count("Kai's Goat Hoof") * (speed*0.15)) # 0.15x speed for each hoof
 	sword_collider.scale = Vector2(sc_size(), 1 + (get_upgrade_count("Extendo-grip")*grip_change_rate))
 	sword_collider.position = Vector2(10 * (sc_size()), -1 * (sword_collider.shape.size.y/2))
 
@@ -138,11 +142,12 @@ func get_upgrade_count(upgrade):
 		return Globals.upgrades[upgrade]['Count']
 	return 0
 	
-func gain_upgrade(upgrade):
+func gain_upgrade(upgrade, icon):
 	var upgrade_object = Globals.upgrades[upgrade]
 	upgrade_object['Count'] += 1
 	set_stats()
-	print(upgrade_object)
+	emit_signal("upgrade_collect", upgrade, upgrade_object["Description"], upgrade_object["Lore"], icon)
+	$Upgrade.play()
 
 
 func _on_animated_sprite_2d_animation_finished():

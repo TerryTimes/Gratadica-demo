@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bi4ogytocaskk"]
+[gd_scene load_steps=45 format=3 uid="uid://bi4ogytocaskk"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/player.gd" id="1_ntf8a"]
 [ext_resource type="Texture2D" uid="uid://cqqu16eegx0kq" path="res://frame_00001.png" id="3_ctykd"]
@@ -36,19 +36,7 @@
 [ext_resource type="AudioStream" uid="uid://nyvh650f5jxu" path="res://Assets/Audio/SFX/swing.mp3" id="34_3b463"]
 [ext_resource type="AudioStream" uid="uid://c4omfvs2l2o1o" path="res://Assets/Audio/SFX/hit.mp3" id="35_detls"]
 [ext_resource type="AudioStream" uid="uid://cfxa4hfi838gc" path="res://Assets/Audio/Music/A bitter end.mp3" id="36_rwksd"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvc8v"]
-size = Vector2(4, 6)
-
-[sub_resource type="Gradient" id="Gradient_vx83r"]
-offsets = PackedFloat32Array(0, 0.60515, 0.708154, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.285974, 0.285974, 0.285974, 1, 0.184549, 0.184549, 0.184549, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_w0jyl"]
-gradient = SubResource("Gradient_vx83r")
-fill = 1
-fill_from = Vector2(0.507645, 0.46789)
-fill_to = Vector2(0.825688, 0.155963)
+[ext_resource type="AudioStream" uid="uid://bale72gyo706f" path="res://Assets/Audio/SFX/upgrade.mp3" id="37_uafo3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyj3p"]
 size = Vector2(10.2941, 16)
@@ -60,6 +48,9 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_h6s2q"]
 offsets = PackedFloat32Array(0, 0.538776, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0, 0.809767, 0.45801, 0.759184, 0.415686, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvc8v"]
+size = Vector2(4, 6)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rqr62"]
 animations = [{
@@ -219,23 +210,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_vx83r"]
+offsets = PackedFloat32Array(0, 0.60515, 0.708154, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.285974, 0.285974, 0.285974, 1, 0.184549, 0.184549, 0.184549, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w0jyl"]
+gradient = SubResource("Gradient_vx83r")
+fill = 1
+fill_from = Vector2(0.507645, 0.46789)
+fill_to = Vector2(0.825688, 0.155963)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ntf8a")
 max_added_speed = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
-shape = SubResource("RectangleShape2D_qvc8v")
-
-[node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
-zoom = Vector2(9, 9)
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(2.99998, -22)
-scale = Vector2(1.6875, 1.78125)
-energy = 0.29
-texture = SubResource("GradientTexture2D_w0jyl")
-texture_scale = 1.32
 
 [node name="SwordHitbox" type="Area2D" parent="."]
 scale = Vector2(1.36, 1)
@@ -260,25 +247,43 @@ round_precision = 10
 antialiased = true
 script = ExtResource("5_7spnu")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_qvc8v")
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
+zoom = Vector2(9, 9)
+position_smoothing_speed = 20.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_rqr62")
 animation = &"attack-left"
 
-[node name="Swing" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("34_3b463")
-volume_db = -11.277
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(2.99998, -22)
+scale = Vector2(1.6875, 1.78125)
+energy = 0.29
+texture = SubResource("GradientTexture2D_w0jyl")
+texture_scale = 1.32
 
 [node name="SwingCooldown" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Swing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_3b463")
+volume_db = -11.277
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("35_detls")
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("36_rwksd")
+
+[node name="Upgrade" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_uafo3")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="SwingCooldown" to="." method="_on_swing_cooldown_timeout"]

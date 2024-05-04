@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://pa8vx8712olh"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="NotifierPanel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_right = 0.142375
+anchor_bottom = 0.0962222
+offset_right = 0.199982
+offset_bottom = 0.399998
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="NotifierPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Upgrade unlocked!"
