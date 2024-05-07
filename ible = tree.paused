@@ -1,0 +1,137 @@
+[33mcommit ec464e97b57292d8087797d70ad06b008030d151[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Dappro <aidanwignall2009@gmail.com>
+Date:   Mon May 6 21:41:23 2024 -0700
+
+    Started door system
+
+[33mcommit b0a4d78af41f952cd739ae5186e7fee6baf0f9c9[m
+Author: Dappro <aidanwignall2009@gmail.com>
+Date:   Sat May 4 10:45:18 2024 -0700
+
+    Added upgrade popup and sound
+
+[33mcommit 5b04e3dd95973ac685d17cd2d166ea44deba2a85[m
+Author: Aidan W <460266@bsd48.org>
+Date:   Fri May 3 15:21:21 2024 -0700
+
+    spore spawn enemy added
+
+[33mcommit 01d60a02863f59ebe5b39f8627067aa6cdba8bca[m
+Author: Aidan W <460266@bsd48.org>
+Date:   Fri May 3 12:53:11 2024 -0700
+
+    Map updates and kb fix
+
+[33mcommit 6ca421989961fda6fe6a9b54505623541d996f65[m
+Author: Dappro <aidanwignall2009@gmail.com>
+Date:   Thu May 2 23:03:31 2024 -0700
+
+    Enemy spawn improvements
+
+[33mcommit fcd4a3061037eb94ab32280d510aa8a922c1010d[m
+Author: Dappro <aidanwignall2009@gmail.com>
+Date:   Wed May 1 20:49:07 2024 -0700
+
+    New enemy and map additions
+
+[33mcommit ee3cc51c49d7919a26d898f0f6b02805c7023303[m
+Merge: 7fae5a4 52f93fd
+Author: Dappro <aidanwignall2009@gmail.com>
+Date:   Wed May 1 17:26:43 2024 -0700
+
+    Merge branch 'main' into mayDay
+
+[33mcommit 7fae5a4107b9ee6aae5bf641f3ab7391f3dac68a[m[33m ([m[1;31morigin/mayDay[m[33m, [m[1;32mmayDay[m[33m)[m
+Author: Aidan W <460266@bsd48.org>
+Date:   Wed May 1 10:32:11 2024 -0700
+
+    Added folders
+
+[33mcommit c18c2026f0157f793a3a5c312e5b1505278519cf[m
+Author: Aidan W <460266@bsd48.org>
+Date:   Wed May 1 10:30:55 2024 -0700
+
+    Fixed imports
+
+[33mcommit 52f93fd951906b469b2502cdcbf4fdcb530d17e9[m
+Author: Dappro <aidanwignall2009@gmail.com>
+Date:   Tue Apr 30 23:08:48 2024 -0700
+
+    Map changes and player updates
+
+[33mcommit 1ad116397a08f85cd546d6fd9c16f299cb969662[m
+Merge: 2497254 7a7e346
+Author: Dappro <aidanwignall2009@gmail.com>
+Date:   Tue Apr 30 22:54:52 2024 -0700
+
+    Merge branch 'main' of https://github.com/TerryTimes/Gratadica-demo
+
+[33mcommit 7a7e346300b1a16a54aace499a1ad6c945b43c3d[m
+Merge: 8b124d4 018b5c5
+Author: TerryTimes <151093584+TerryTimes@users.noreply.github.com>
+Date:   Tue Apr 30 22:53:32 2024 -0700
+
+    Merge pull request #1 from TerryTimes/master
+    
+    Master
+
+[33mcommit 24972546ac0c830d07595de831790efaa5f09a45[m
+Merge: 8b124d4 018b5c5
+Author: Dappro <aidanwignall2009@gmail.com>
+Date:   Tue Apr 30 22:50:11 2024 -0700
+
+    Merge branch 'master'
+
+[33mcommit 018b5c5d90bbe01a494541c895e1cd47641d76d8[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Dappro <aidanwignall2009@gmail.com>
+Date:   Tue Apr 30 22:45:41 2024 -0700
+
+    Changed map, worked on enemies and player
+
+[33mcommit 2085c1185e9b72144b89d5c4c094f3f2aa830e34[m
+Author: Dappro <aidanwignall2009@gmail.com>
+Date:   Wed Apr 17 07:15:51 2024 -0700
+
+    Worked on sprite animation
+
+[33mcommit 8b124d4e6c3c009314716dee0a6a85d630ce0739[m
+Author: Aidan W <460266@bsd48.org>
+Date:   Fri Apr 5 12:20:29 2024 -0700
+
+    Slight map additions
+    
+    Started work on a small area
+
+[33mcommit 385b9a30947996cfb056df73f1a38bb12130bd6a[m[33m ([m[1;31morigin/sprite-test[m[33m)[m
+Author: Aidan W <460266@bsd48.org>
+Date:   Tue Mar 19 11:23:34 2024 -0700
+
+    Added some icons into assets
+
+[33mcommit 91bbaa2b63cb90bfc7730da2a10900fe4bce4ea6[m
+Author: Aidan W <460266@bsd48.org>
+Date:   Fri Mar 15 15:23:54 2024 -0700
+
+    Changed Player Sprite
+    
+    Changed the player sprite to paper boi
+
+[33mcommit 306ea9ecea3167c98cce908e05844a008f4d82ca[m
+Author: Aidan W <460266@bsd48.org>
+Date:   Fri Mar 8 15:18:55 2024 -0800
+
+    Testing
+    
+    Test
+
+[33mcommit d255cf1861d3498051aed89fc8402c11f1a8f6e7[m
+Author: Aidan W <460266@bsd48.org>
+Date:   Fri Mar 8 15:14:42 2024 -0800
+
+    Initial commit
+
+[33mcommit 5a1d67de03d780ca5cc475e66d0c42dc1342e3db[m
+Author: Aidan W <460266@bsd48.org>
+Date:   Fri Mar 8 15:13:11 2024 -0800
+
+    Initial commit

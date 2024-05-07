@@ -221,6 +221,8 @@ fill_from = Vector2(0.507645, 0.46789)
 fill_to = Vector2(0.825688, 0.155963)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_ntf8a")
 max_added_speed = 2
 

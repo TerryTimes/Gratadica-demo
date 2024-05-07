@@ -13,6 +13,19 @@ var max_health = 100
 func _ready():
 	_update_health_label()
 	upgrade_panel.visible = false
+	$ColorRect.visible = false
+	$PauseMenu.visible = false
+	
+func _process(_delta):
+	if Input.is_action_just_pressed("Pause"):
+		pause()
+	
+func pause():
+	var tree = get_tree()
+	tree.paused = !tree.paused
+	$ColorRect.visible = tree.paused
+	$PauseMenu.visible = tree.paused
+	
 
 func _update_health_label():
 	"""Update the healthbar"""
@@ -29,3 +42,7 @@ func display_upgrade(name, description, lore, icon:CompressedTexture2D=null):
 		upgrade_panel.get_node("TextureRect").texture = icon
 		
 	upgrade_panel.get_node("AnimationPlayer").play("popup")
+
+func _on_resume_pressed():
+	print("AWuh")
+	# pause()

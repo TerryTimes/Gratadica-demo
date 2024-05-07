@@ -60,10 +60,6 @@ func _physics_process(delta) -> void:
 	if velocity:
 		sprite.speed_scale = 1 * ((max(abs(velocity.x), abs(velocity.y)))/speed)
 		
-	# Update sword hitbox to direction of player (flip_h)
-	# sword_hitbox.position.x = sword_hitbox.get_node("CollisionShape2D").shape.size.x * -(int($Sprite2D.flip_h) * 2 - 1)
-	# sword_collider.position.x = (-1 * (int(sprite.flip_h) * 2 - 1)) * (10 * sc_size())
-
 	move_and_slide()
 
 	Globals.player_pos = self.global_position

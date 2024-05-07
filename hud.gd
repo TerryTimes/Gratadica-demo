@@ -10,3 +10,6 @@ func _ready():
 func _process(_delta):
 	healthbar.max_value = Globals.player_max_health
 	healthbar.value = Globals.player_health
+	print("AWEoih")
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().paused = !get_tree().paused

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://kvf6wnq12j0g"]
+[gd_scene load_steps=14 format=3 uid="uid://kvf6wnq12j0g"]
 
 [ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_e27p0"]
 [ext_resource type="Texture2D" uid="uid://c43742pvi1eny" path="res://icon.svg" id="2_0ktei"]
 [ext_resource type="Script" path="res://Scenes/UI/upgrade_panel.gd" id="3_iru8b"]
+[ext_resource type="Shader" path="res://Scenes/UI/blur.gdshader" id="4_6gual"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gg2co"]
 line_spacing = 20.69
@@ -68,7 +69,15 @@ _data = {
 "popup": SubResource("Animation_200ko")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_yiel1"]
+font_size = 45
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_12773"]
+shader = ExtResource("4_6gual")
+shader_parameter/amount = 0.9
+
 [node name="UI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_e27p0")
 
 [node name="Control" type="Control" parent="."]
@@ -183,6 +192,7 @@ grow_vertical = 2
 texture = ExtResource("2_0ktei")
 
 [node name="UpgradePanel" type="Panel" parent="Control"]
+z_index = -2
 custom_minimum_size = Vector2(256, 192)
 layout_mode = 1
 anchors_preset = -1
@@ -255,3 +265,58 @@ texture = ExtResource("2_0ktei")
 libraries = {
 "": SubResource("AnimationLibrary_1bd46")
 }
+
+[node name="PauseMenu" type="MarginContainer" parent="."]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 300
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 2
+
+[node name="List" type="VBoxContainer" parent="PauseMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="Phosphoressence" type="Label" parent="PauseMenu/CenterContainer/List"]
+layout_mode = 2
+text = "Phosphoressence"
+label_settings = SubResource("LabelSettings_yiel1")
+horizontal_alignment = 1
+
+[node name="Space" type="Label" parent="PauseMenu/CenterContainer/List"]
+layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_yiel1")
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="PauseMenu/CenterContainer/List"]
+layout_mode = 2
+action_mode = 0
+text = "Resume"
+
+[node name="Menu" type="Button" parent="PauseMenu/CenterContainer/List"]
+layout_mode = 2
+text = "Back to Menu"
+
+[node name="Button" type="Button" parent="PauseMenu"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = -1
+material = SubResource("ShaderMaterial_12773")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="PauseMenu/CenterContainer/List/Resume" to="." method="_on_resume_pressed"]

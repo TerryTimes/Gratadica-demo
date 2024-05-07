@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://88ppvvfeemyx"]
+[gd_scene load_steps=6 format=3 uid="uid://88ppvvfeemyx"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_mjktb"]
 [ext_resource type="Texture2D" uid="uid://c43742pvi1eny" path="res://icon.svg" id="2_xk0ea"]
@@ -10,6 +10,9 @@ colors = PackedColorArray(0.381275, 0.490642, 0.970641, 1, 0.339396, 0.443368, 0
 gradient = SubResource("Gradient_20g0t")
 width = 1820
 height = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_7e8a2"]
+font_size = 25
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_mjktb")
@@ -104,3 +107,22 @@ grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("2_xk0ea")
 metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="List" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PauseMenu/List"]
+layout_mode = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_7e8a2")
+
+[node name="Resume" type="Button" parent="PauseMenu/List"]
+layout_mode = 2
+text = "Resume"
