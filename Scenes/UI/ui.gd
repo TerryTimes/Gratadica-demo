@@ -4,6 +4,8 @@ class_name UI
 @onready var health_bar = $Control/MarginContainer/VBoxContainer/HBoxContainer2/ProgressBar
 @onready var upgrade_panel = $Control/UpgradePanel
 
+var current_time: float = 0
+
 var health = 0:
 	set(new_score):
 		health = new_score
@@ -14,11 +16,12 @@ func _ready():
 	_update_health_label()
 	upgrade_panel.visible = false
 	$ColorRect.visible = false
-	$PauseMenu.visible = false
+	$PauseMenu.hide()
 	
-func _process(_delta):
+func _process(delta):
 	if Input.is_action_just_pressed("Pause"):
 		pause()
+	current_time += delta
 	
 func pause():
 	var tree = get_tree()
@@ -32,10 +35,10 @@ func _update_health_label():
 	health_bar.value = health
 	health_bar.max_value = max_health
 
-func display_upgrade(name, description, lore, icon:CompressedTexture2D=null):
+func display_upgrade(u_name, description, lore, icon:CompressedTexture2D=null):
 	"""Display a collected upgrade in a popup"""
 	upgrade_panel.visible = true
-	upgrade_panel.get_node("Name").text = name
+	upgrade_panel.get_node("Name").text = u_name
 	upgrade_panel.get_node("Description").text = description
 	upgrade_panel.get_node("Lore").text = lore
 	if icon:
@@ -44,5 +47,7 @@ func display_upgrade(name, description, lore, icon:CompressedTexture2D=null):
 	upgrade_panel.get_node("AnimationPlayer").play("popup")
 
 func _on_resume_pressed():
-	print("AWuh")
-	# pause()
+	pause()
+
+func _on_button_pressed():
+	pass # Replace with function body.

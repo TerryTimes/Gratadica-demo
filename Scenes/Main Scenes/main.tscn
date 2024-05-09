@@ -428,114 +428,120 @@ fill_from = Vector2(0.501529, 0.474006)
 fill_to = Vector2(0.856269, 0.140673)
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("player", "ui")]
+process_mode = 3
 y_sort_enabled = true
 script = ExtResource("1_apqg6")
-player = NodePath("Player")
+player = NodePath("World/Player")
 ui = NodePath("UI")
 
-[node name="EnemyManager" type="Node" parent="." node_paths=PackedStringArray("tilemap")]
+[node name="UI" parent="." instance=ExtResource("21_7fro5")]
+
+[node name="World" type="Node" parent="."]
+process_mode = 1
+
+[node name="EnemyManager" type="Node" parent="World" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("2_us7lo")
 tilemap = NodePath("../Map/Regions/TileMap")
 
-[node name="Enemies" type="Node" parent="EnemyManager"]
+[node name="Enemies" type="Node" parent="World/EnemyManager"]
 
-[node name="Enemy" parent="EnemyManager/Enemies" instance=ExtResource("9_d2m42")]
+[node name="Enemy" parent="World/EnemyManager/Enemies" instance=ExtResource("9_d2m42")]
 position = Vector2(-1, -75)
 
-[node name="Enemy9" parent="EnemyManager/Enemies" instance=ExtResource("16_c45hs")]
+[node name="Enemy9" parent="World/EnemyManager/Enemies" instance=ExtResource("16_c45hs")]
 position = Vector2(89, -194)
 
-[node name="Timers" type="Node" parent="EnemyManager"]
+[node name="Timers" type="Node" parent="World/EnemyManager"]
 
-[node name="SpawnEnemy" type="Timer" parent="EnemyManager/Timers"]
+[node name="SpawnEnemy" type="Timer" parent="World/EnemyManager/Timers"]
 wait_time = 3.0
 autostart = true
 
-[node name="Spawners" type="Node" parent="EnemyManager"]
+[node name="Spawners" type="Node" parent="World/EnemyManager"]
 
-[node name="OnScreenSpawner" parent="EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
+[node name="OnScreenSpawner" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
 position = Vector2(82, -256)
 enemy_scene = ExtResource("16_c45hs")
 spawn_count = 3
 
-[node name="OnScreenSpawner6" parent="EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
+[node name="OnScreenSpawner6" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
 position = Vector2(54, -210)
 enemy_scene = ExtResource("9_d2m42")
 spawn_count = 1
 
-[node name="OnScreenSpawner7" parent="EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
+[node name="OnScreenSpawner7" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
 position = Vector2(-62, -209)
 enemy_scene = ExtResource("9_d2m42")
 spawn_count = 1
 
-[node name="OnScreenSpawner2" parent="EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
+[node name="OnScreenSpawner2" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
 position = Vector2(-134, -290)
 enemy_scene = ExtResource("16_c45hs")
 spawn_count = 3
 
-[node name="OnScreenSpawner3" parent="EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
+[node name="OnScreenSpawner3" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
 position = Vector2(-112, -298)
 enemy_scene = ExtResource("16_c45hs")
 spawn_count = 3
 
-[node name="OnScreenSpawner4" parent="EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
+[node name="OnScreenSpawner4" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
 position = Vector2(-117, -282)
 enemy_scene = ExtResource("16_c45hs")
 spawn_count = 3
 
-[node name="OnScreenSpawner5" parent="EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
+[node name="OnScreenSpawner5" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
 position = Vector2(96, -338)
 enemy_scene = ExtResource("16_c45hs")
 spawn_count = 3
 
-[node name="SoundRegions" type="Node" parent="."]
+[node name="SoundRegions" type="Node" parent="World"]
 script = ExtResource("7_ri1eq")
 
-[node name="Area2D" type="Area2D" parent="SoundRegions"]
+[node name="Area2D" type="Area2D" parent="World/SoundRegions"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundRegions/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/SoundRegions/Area2D"]
 position = Vector2(4359, 2452)
 shape = SubResource("RectangleShape2D_jq25u")
 debug_color = Color(0.686275, 0.294118, 1, 0.419608)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundRegions/Area2D"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World/SoundRegions/Area2D"]
 stream = ExtResource("8_cslvj")
 
-[node name="Music" type="AudioStreamPlayer" parent="SoundRegions"]
+[node name="Music" type="AudioStreamPlayer" parent="World/SoundRegions"]
 stream = ExtResource("8_cslvj")
 autoplay = true
 
-[node name="Unused" type="Node" parent="."]
+[node name="Unused" type="Node" parent="World"]
 
-[node name="Spawner" parent="Unused" instance=ExtResource("5_h1pmk")]
+[node name="Spawner" parent="World/Unused" instance=ExtResource("5_h1pmk")]
 visible = false
 position = Vector2(2.00006, -97)
 scale = Vector2(0.515038, 0.54077)
 
-[node name="Upgrades" type="Node" parent="."]
+[node name="Upgrades" type="Node" parent="World"]
 
-[node name="Upgrade" parent="Upgrades" instance=ExtResource("7_olejr")]
+[node name="Upgrade" parent="World/Upgrades" instance=ExtResource("7_olejr")]
 position = Vector2(-112, 61)
 scale = Vector2(0.373407, 0.373407)
 upgrade = "Extendo-grip"
 icon = ExtResource("9_bsy26")
 
-[node name="Map" type="Node" parent="."]
+[node name="Map" type="Node" parent="World"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Map"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="World/Map"]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Map/ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="World/Map/ParallaxBackground"]
 scale = Vector2(2, 2)
 motion_mirroring = Vector2(72, 72)
 
-[node name="Sprite2D" type="Sprite2D" parent="Map/ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="World/Map/ParallaxBackground/ParallaxLayer"]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("10_weipk")
 centered = false
 
-[node name="Regions" type="Node" parent="Map"]
+[node name="Regions" type="Node" parent="World/Map"]
 
-[node name="TileMap" type="TileMap" parent="Map/Regions"]
+[node name="TileMap" type="TileMap" parent="World/Map/Regions"]
 z_index = -1
 y_sort_enabled = true
 position = Vector2(-7658, -2795)
@@ -553,106 +559,104 @@ layer_2/y_sort_enabled = true
 layer_2/z_index = 2
 layer_2/tile_data = PackedInt32Array(15401594, 589824, 3, 15204993, 589824, 3, 15532673, 589824, 3, 14877306, 589824, 3, 14418561, 589824, 3, 14484097, 589824, 3, 14418562, 589824, 3, 15401600, 589824, 2, 15532668, 589824, 2, 14877310, 589824, 2, 14615162, 589824, 2, 15139456, 65536, 1, 14025335, 589824, 2, 13697651, 589824, 2, 13763188, 589824, 2, 13828724, 589824, 2, 13501063, 589824, 2, 13435520, 589824, 2, 13501050, 589824, 2, 13238900, 589824, 2, 14025351, 589824, 2, 14156421, 589824, 3, 13697672, 589824, 3, 13894273, 589824, 3, 13501044, 589824, 3, 13304434, 589824, 3, 13304455, 589824, 3, 15270525, 131072, 1, 14811778, 131072, 1, 15139450, 131072, 1, 14549627, 131072, 1, 13894277, 131072, 1, 14025333, 131072, 1, 13632129, 131072, 1, 13435508, 131072, 1, 13173382, 131072, 1, 14418564, 393216, 1, 14287491, 393216, 1, 14221955, 393216, 1, 14287485, 1, 131072, 14287484, 1, 131072, 13697669, 393216, 1, 13697670, 393216, 1, 13828742, 393216, 1, 13828743, 1, 65536, 13894279, 393216, 1, 13369987, 393216, 1, 13435523, 393216, 1, 13501060, 393216, 1, 13566583, 393216, 1, 13632119, 393216, 1, 13632118, 393216, 1, 13697655, 393216, 1, 14156402, 393216, 1, 14156401, 393216, 1, 14287472, 393216, 1, 14811765, 393216, 1, 14811764, 393216, 1, 14877299, 393216, 1, 14942835, 393216, 1, 15008370, 393216, 1, 15598193, 393216, 1, 15598194, 393216, 1, 15532658, 393216, 1, 15532659, 393216, 1, 15204981, 393216, 1, 15139444, 393216, 1, 15073908, 393216, 1, 15008371, 393216, 1, 14418547, 393216, 1, 14353011, 393216, 1, 14353012, 393216, 1, 14287476, 393216, 1, 15336075, 393216, 1, 15336074, 393216, 1, 15336073, 393216, 1, 15336072, 393216, 1, 15270536, 393216, 1, 15205000, 393216, 1, 15139464, 393216, 1, 15073928, 393216, 1, 15008392, 393216, 1, 14942856, 393216, 1, 14877320, 393216, 1, 14811784, 393216, 1, 14746248, 393216, 1, 14680712, 393216, 1, 14680711, 393216, 1, 14615175, 393216, 1, 14615174, 393216, 1, 15073927, 393216, 1, 15139462, 393216, 1, 15204998, 393216, 1, 15270534, 393216, 1, 15336070, 393216, 1, 15401609, 393216, 1, 15467145, 393216, 1, 15532681, 393216, 1, 15532680, 393216, 1, 15532679, 393216, 1, 15991426, 393216, 1, 15925890, 393216, 1, 15925891, 393216, 1, 15860355, 393216, 1, 15860356, 393216, 1, 15794820, 393216, 1, 15794821, 393216, 1, 15729285, 393216, 1, 15860354, 393216, 1, 15794818, 393216, 1, 15794817, 393216, 1, 15729281, 393216, 1, 14287496, 393216, 1, 14353031, 393216, 1, 14353030, 393216, 1, 14353029, 393216, 1, 14549637, 393216, 1, 15073916, 1, 65536, 14746240, 1, 65536, 14353020, 1, 65536, 14090883, 1, 65536, 14090872, 1, 65536, 13894267, 1, 65536, 13894272, 1, 65536, 13566592, 1, 65536, 13566587, 1, 65536, 13894260, 1, 65536, 13435510, 1, 65536, 13173380, 1, 65536, 13238908, 1, 65536, 14287488, 1, 131072, 14287487, 1, 131072, 14287486, 1, 131072, 14287483, 1, 131072, 14221933, 1, 65536, 14484073, 1, 65536, 14484065, 1, 65536, 14746206, 1, 65536, 14942807, 589824, 2, 15270482, 1, 65536, 14287502, 1, 65536, 14287511, 1, 65536, 14615195, 1, 65536, 14680738, 1, 65536, 15139492, 1, 65536, 15270570, 1, 65536, 14090889, 1, 131072, 14156425, 1, 131072, 14221961, 1, 131072, 14221962, 1, 131072, 14156426, 1, 131072, 14156427, 1, 131072, 14221963, 1, 131072, 14156424, 1, 131072, 14418533, 589824, 2, 14811740, 589824, 2, 15139412, 589824, 2, 14353006, 589824, 2, 14221930, 589824, 2, 14484067, 1, 131072, 14484068, 1, 131072, 14549604, 1, 131072, 14549603, 1, 131072, 14615139, 1, 131072, 14418539, 131072, 1, 14680666, 131072, 1, 15073879, 131072, 1, 14353049, 589824, 2, 14680736, 589824, 2, 15008419, 589824, 2, 14287506, 589824, 2, 14221967, 589824, 2, 14877350, 589824, 2, 14811807, 589824, 2, 15336104, 589824, 2, 14025344, 1, 131072, 14025343, 1, 131072, 14090879, 1, 131072, 13894262, 1, 131072, 13894261, 1, 131072, 13959797, 1, 131072, 13959796, 1, 131072, 14025332, 1, 131072, 14025331, 1, 131072, 13959798, 1, 131072, 15401591, 1, 131072, 15401592, 1, 131072, 15467128, 1, 131072, 15467127, 1, 131072, 15532663, 1, 131072, 15598199, 1, 131072, 15532665, 1, 131072, 15467129, 1, 131072, 15532664, 1, 131072)
 
-[node name="ImageDecor" type="Node" parent="Map"]
+[node name="ImageDecor" type="Node" parent="World/Map"]
 
-[node name="WKeyDark" type="Sprite2D" parent="Map/ImageDecor"]
+[node name="WKeyDark" type="Sprite2D" parent="World/Map/ImageDecor"]
 modulate = Color(0.341176, 0.239216, 1, 0.682353)
 z_index = -1
 position = Vector2(23, 5)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("11_6cxkp")
 
-[node name="WKeyDark2" type="Sprite2D" parent="Map/ImageDecor"]
+[node name="WKeyDark2" type="Sprite2D" parent="World/Map/ImageDecor"]
 modulate = Color(0.341176, 0.239216, 1, 0.682353)
 z_index = -1
 position = Vector2(9, 18)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("12_lswwd")
 
-[node name="WKeyDark3" type="Sprite2D" parent="Map/ImageDecor"]
+[node name="WKeyDark3" type="Sprite2D" parent="World/Map/ImageDecor"]
 modulate = Color(0.341176, 0.239216, 1, 0.682353)
 z_index = -1
 position = Vector2(23, 18)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("13_23hfj")
 
-[node name="WKeyDark4" type="Sprite2D" parent="Map/ImageDecor"]
+[node name="WKeyDark4" type="Sprite2D" parent="World/Map/ImageDecor"]
 modulate = Color(0.341176, 0.239216, 1, 0.682353)
 z_index = -1
 position = Vector2(37, 18)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("14_xq2ja")
 
-[node name="MouseLeftKeyDark" type="Sprite2D" parent="Map/ImageDecor"]
+[node name="MouseLeftKeyDark" type="Sprite2D" parent="World/Map/ImageDecor"]
 modulate = Color(0.341176, 0.239216, 1, 0.682353)
 z_index = -1
 position = Vector2(-28, -46)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("15_hq3pp")
 
-[node name="MouseLeftKeyDark2" type="Sprite2D" parent="Map/ImageDecor"]
+[node name="MouseLeftKeyDark2" type="Sprite2D" parent="World/Map/ImageDecor"]
 modulate = Color(0.341176, 0.239216, 1, 0.682353)
 z_index = -1
 position = Vector2(-3, -157)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("15_hq3pp")
 
-[node name="Lighting" type="Node" parent="Map"]
+[node name="Lighting" type="Node" parent="World/Map"]
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Map/Lighting"]
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="World/Map/Lighting"]
 color = Color(0.0156863, 0.141176, 1, 1)
 energy = 0.13
 shadow_color = Color(0, 0, 0, 0.643137)
 
-[node name="PointLight2D15" type="PointLight2D" parent="Map/Lighting"]
+[node name="PointLight2D15" type="PointLight2D" parent="World/Map/Lighting"]
 position = Vector2(-3, 43.5)
 scale = Vector2(5.3125, 5.67187)
 energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
-[node name="PointLight2D16" type="PointLight2D" parent="Map/Lighting"]
+[node name="PointLight2D16" type="PointLight2D" parent="World/Map/Lighting"]
 position = Vector2(168, -225)
 scale = Vector2(5.9375, 5.67187)
 energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
-[node name="PointLight2D17" type="PointLight2D" parent="Map/Lighting"]
+[node name="PointLight2D17" type="PointLight2D" parent="World/Map/Lighting"]
 position = Vector2(-177, -212)
 scale = Vector2(5.9375, 5.67187)
 energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
-[node name="PointLight2D18" type="PointLight2D" parent="Map/Lighting"]
+[node name="PointLight2D18" type="PointLight2D" parent="World/Map/Lighting"]
 position = Vector2(-455, -68)
 scale = Vector2(5.9375, 5.67187)
 energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
-[node name="PointLight2D19" type="PointLight2D" parent="Map/Lighting"]
+[node name="PointLight2D19" type="PointLight2D" parent="World/Map/Lighting"]
 position = Vector2(294, -162)
 scale = Vector2(5.9375, 5.67187)
 energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
-[node name="PointLight2D20" type="PointLight2D" parent="Map/Lighting"]
+[node name="PointLight2D20" type="PointLight2D" parent="World/Map/Lighting"]
 position = Vector2(363, 9)
 scale = Vector2(5.9375, 5.67187)
 energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("1_y74ln")]
+[node name="Player" parent="World" groups=["player"] instance=ExtResource("1_y74ln")]
 position = Vector2(4, 12)
 speed = 50
 
-[node name="UI" parent="." instance=ExtResource("21_7fro5")]
-
-[node name="Key" parent="." instance=ExtResource("22_lxxy6")]
+[node name="Key" parent="World" instance=ExtResource("22_lxxy6")]
 position = Vector2(-24, 33)
 
-[node name="Door" parent="." node_paths=PackedStringArray("key") instance=ExtResource("23_b22u5")]
+[node name="Door" parent="World" node_paths=PackedStringArray("key") instance=ExtResource("23_b22u5")]
 position = Vector2(13, 40)
 key = NodePath("../Key")
 
-[connection signal="timeout" from="EnemyManager/Timers/SpawnEnemy" to="EnemyManager" method="_on_spawn_enemy_timeout"]
-[connection signal="died" from="Player" to="EnemyManager" method="_on_player_died"]
-[connection signal="died" from="Player" to="SoundRegions" method="_on_player_died"]
+[connection signal="timeout" from="World/EnemyManager/Timers/SpawnEnemy" to="World/EnemyManager" method="_on_spawn_enemy_timeout"]
+[connection signal="died" from="World/Player" to="World/EnemyManager" method="_on_player_died"]
+[connection signal="died" from="World/Player" to="World/SoundRegions" method="_on_player_died"]
