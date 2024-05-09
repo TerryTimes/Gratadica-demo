@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmr5uolpuxjmb"]
 
 [ext_resource type="Script" path="res://Assets/Environment/Scene Tiles/door.gd" id="1_y3s53"]
-[ext_resource type="Texture2D" uid="uid://dyxdiobviexal" path="res://Assets/Environment/Scene Tiles/stone_wall.png" id="2_geycr"]
+[ext_resource type="Texture2D" uid="uid://cujgdio6scgvo" path="res://Assets/Environment/Scene Tiles/Door.png" id="2_xl3ro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofbc4"]
 size = Vector2(24, 24)
@@ -10,9 +10,7 @@ size = Vector2(24, 24)
 script = ExtResource("1_y3s53")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.90735e-06, 0)
-scale = Vector2(1, 1)
-texture = ExtResource("2_geycr")
+texture = ExtResource("2_xl3ro")
 region_enabled = true
 region_rect = Rect2(0, 0, 24, 24)
 

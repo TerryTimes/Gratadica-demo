@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://5mprvm4wgp52"]
 
 [ext_resource type="Script" path="res://key.gd" id="1_c24rc"]
-[ext_resource type="Texture2D" uid="uid://c43742pvi1eny" path="res://icon.svg" id="2_wdm8g"]
+[ext_resource type="Texture2D" uid="uid://k54gng44xevx" path="res://Assets/Environment/Scene Tiles/key.png" id="2_rwstc"]
 [ext_resource type="AudioStream" uid="uid://cft5ywd6mjg55" path="res://Assets/Audio/SFX/Key.mp3" id="3_ow382"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lkci"]
@@ -15,7 +15,7 @@ script = ExtResource("1_c24rc")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.90735e-06, 0)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_wdm8g")
+texture = ExtResource("2_rwstc")
 region_rect = Rect2(0, 0, 24, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
