@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2ncvytor06f0"]
+
+[ext_resource type="Texture2D" uid="uid://l5bqsq8gfpck" path="res://Assets/Images/thumb.png" id="1_2kcs0"]
+[ext_resource type="AudioStream" uid="uid://7lqijkeu4uol" path="res://Assets/Audio/Music/Fractured.mp3" id="2_3cxh6"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2kcs0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3cxh6")
+volume_db = -6.266
+autoplay = true

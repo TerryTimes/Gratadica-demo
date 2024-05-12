@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://kvf6wnq12j0g"]
+[gd_scene load_steps=20 format=3 uid="uid://kvf6wnq12j0g"]
 
 [ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_e27p0"]
 [ext_resource type="Texture2D" uid="uid://c43742pvi1eny" path="res://icon.svg" id="2_0ktei"]
@@ -6,6 +6,8 @@
 [ext_resource type="Shader" path="res://Scenes/UI/blur.gdshader" id="4_6gual"]
 [ext_resource type="Texture2D" uid="uid://f1hknsd3ulht" path="res://Assets/Images/phos.png" id="4_fwow1"]
 [ext_resource type="Script" path="res://Scenes/UI/phoslogo.gd" id="5_c0yvc"]
+[ext_resource type="AudioStream" uid="uid://c5kyp4l7rwxo2" path="res://Assets/Audio/Music/Desist.mp3" id="6_2cc2g"]
+[ext_resource type="Script" path="res://Scenes/UI/Blur.gd" id="8_oc1wh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gg2co"]
 line_spacing = 20.69
@@ -75,6 +77,44 @@ _data = {
 shader = ExtResource("4_6gual")
 shader_parameter/amount = 1.285
 
+[sub_resource type="Animation" id="Animation_exxgh"]
+resource_name = "new_animation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.9, 1.4, 0.9]
+}
+
+[sub_resource type="Animation" id="Animation_54crr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.285]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lehkv"]
+_data = {
+"RESET": SubResource("Animation_54crr"),
+"new_animation": SubResource("Animation_exxgh")
+}
+
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_e27p0")
@@ -100,6 +140,7 @@ layout_mode = 2
 size_flags_vertical = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Health" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -300,6 +341,12 @@ modulate = Color(0.341176, 0.541176, 1, 1)
 layout_mode = 2
 text = "Back to Menu"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PauseMenu"]
+process_mode = 2
+stream = ExtResource("6_2cc2g")
+volume_db = -9.398
+autoplay = true
+
 [node name="ColorRect" type="ColorRect" parent="."]
 process_mode = 3
 visible = false
@@ -311,5 +358,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="BlurAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lehkv")
+}
+script = ExtResource("8_oc1wh")
 
 [connection signal="pressed" from="PauseMenu/CenterContainer/List/Resume" to="." method="_on_resume_pressed"]
