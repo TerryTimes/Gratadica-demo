@@ -4,3 +4,4 @@
 
 [node name="Master" type="Node2D"]
 script = ExtResource("1_fdutp")
+open_on_menu = true
