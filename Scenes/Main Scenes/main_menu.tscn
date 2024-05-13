@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2ncvytor06f0"]
+[gd_scene load_steps=9 format=3 uid="uid://b2ncvytor06f0"]
 
 [ext_resource type="Texture2D" uid="uid://l5bqsq8gfpck" path="res://Assets/Images/thumb.png" id="1_2kcs0"]
+[ext_resource type="Script" path="res://Scenes/Main Scenes/main_menu.gd" id="1_xuvhi"]
 [ext_resource type="AudioStream" uid="uid://7lqijkeu4uol" path="res://Assets/Audio/Music/Fractured.mp3" id="2_3cxh6"]
 [ext_resource type="Texture2D" uid="uid://uysrm56j3y6b" path="res://Assets/Images/button.png" id="2_12jy8"]
 [ext_resource type="Script" path="res://Scenes/Main Scenes/noise_scroll.gd" id="2_xm2th"]
@@ -18,6 +19,7 @@ color_ramp = SubResource("Gradient_tpx2y")
 noise = SubResource("FastNoiseLite_nk8b8")
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_xuvhi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -47,31 +49,29 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="newgame" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-text = "Begin
-"
+text = "New Game"
 icon = ExtResource("2_12jy8")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="settings" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-text = "Begin
-"
+text = "Settings"
 icon = ExtResource("2_12jy8")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Button3" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="quit" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-text = "Begin
+text = "Quit
 "
 icon = ExtResource("2_12jy8")
 icon_alignment = 1
@@ -112,3 +112,6 @@ scroll_speed = 50.0
 stream = ExtResource("2_3cxh6")
 volume_db = -6.266
 autoplay = true
+
+[connection signal="button_up" from="CanvasLayer/VBoxContainer/newgame" to="." method="_on_newgame_button_up"]
+[connection signal="button_down" from="CanvasLayer/VBoxContainer/quit" to="." method="_on_quit_button_down"]

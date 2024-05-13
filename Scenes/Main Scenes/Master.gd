@@ -1,4 +1,5 @@
 extends Node2D
+class_name Master
 
 @export var open_on_menu: bool
 
