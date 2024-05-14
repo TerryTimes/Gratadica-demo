@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://kvf6wnq12j0g"]
+[gd_scene load_steps=21 format=3 uid="uid://kvf6wnq12j0g"]
 
 [ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_e27p0"]
 [ext_resource type="Texture2D" uid="uid://c43742pvi1eny" path="res://icon.svg" id="2_0ktei"]
 [ext_resource type="Script" path="res://Scenes/UI/upgrade_panel.gd" id="3_iru8b"]
 [ext_resource type="Shader" path="res://Scenes/UI/blur.gdshader" id="4_6gual"]
 [ext_resource type="Texture2D" uid="uid://f1hknsd3ulht" path="res://Assets/Images/phos.png" id="4_fwow1"]
+[ext_resource type="Script" path="res://Scenes/UI/menu_list.gd" id="4_vdppp"]
 [ext_resource type="Script" path="res://Scenes/UI/phoslogo.gd" id="5_c0yvc"]
 [ext_resource type="AudioStream" uid="uid://c5kyp4l7rwxo2" path="res://Assets/Audio/Music/Desist.mp3" id="6_2cc2g"]
 [ext_resource type="Script" path="res://Scenes/UI/Blur.gd" id="8_oc1wh"]
@@ -77,6 +78,21 @@ _data = {
 shader = ExtResource("4_6gual")
 shader_parameter/amount = 1.285
 
+[sub_resource type="Animation" id="Animation_54crr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.285]
+}
+
 [sub_resource type="Animation" id="Animation_exxgh"]
 resource_name = "new_animation"
 length = 4.0
@@ -92,21 +108,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.9, 1.4, 0.9]
-}
-
-[sub_resource type="Animation" id="Animation_54crr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/amount")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.285]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lehkv"]
@@ -236,10 +237,11 @@ z_index = -2
 custom_minimum_size = Vector2(256, 192)
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-offset_left = 384.0
-offset_right = -384.0
-offset_bottom = 192.0
+anchor_left = 0.24
+anchor_right = 0.76
+anchor_bottom = 0.213
+offset_right = -0.00012207
+offset_bottom = 0.299988
 grow_horizontal = 2
 pivot_offset = Vector2(0.08, 0)
 script = ExtResource("3_iru8b")
@@ -313,21 +315,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 300
 
 [node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
 layout_mode = 2
 
 [node name="List" type="VBoxContainer" parent="PauseMenu/CenterContainer"]
 layout_mode = 2
+script = ExtResource("4_vdppp")
 
 [node name="TextureRect" type="TextureRect" parent="PauseMenu/CenterContainer/List"]
 layout_mode = 2
 texture = ExtResource("4_fwow1")
 expand_mode = 5
+stretch_mode = 4
 script = ExtResource("5_c0yvc")
 
 [node name="Resume" type="Button" parent="PauseMenu/CenterContainer/List"]

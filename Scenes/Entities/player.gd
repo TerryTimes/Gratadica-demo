@@ -12,13 +12,14 @@ signal upgrade_collect
 @export var camera_influence = 8 # The higher the number, the less the camera moves based on the mouse
 
 var speed_increase = 0
-var direction
+var direction = Vector2(0, 0)
 var turn_cooldown = 0 # Used for deciding sprite rotation
 var max_health = 100
 var grip_change_rate = 0.2 # Decides how powerful extendo grip is.
 var health = max_health
 var swinging = false
 var alive = true
+
 
 @onready var camera = $Camera2D
 @onready var sprite = $AnimatedSprite2D
