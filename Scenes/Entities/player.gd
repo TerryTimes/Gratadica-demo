@@ -19,7 +19,7 @@ var grip_change_rate = 0.2 # Decides how powerful extendo grip is.
 var health = max_health
 var swinging = false
 var alive = true
-
+var current_speed = speed
 
 @onready var camera = $Camera2D
 @onready var sprite = $AnimatedSprite2D
@@ -55,11 +55,11 @@ func _physics_process(delta) -> void:
 		if speed_increase <= delta:
 			speed_increase = 0
 
-	velocity = (direction.normalized() * speed) + (direction.normalized() * speed_increase)
+	velocity = (direction.normalized() * current_speed) + (direction.normalized() * speed_increase)
 	
 	# Change animation speed
 	if velocity:
-		sprite.speed_scale = 1 * ((max(abs(velocity.x), abs(velocity.y)))/speed)
+		sprite.speed_scale = 1 * ((max(abs(velocity.x), abs(velocity.y)))/current_speed)
 		
 	move_and_slide()
 
@@ -130,7 +130,7 @@ func update_animation_parameters():
 			
 func set_stats():
 	self.knockback_strength = 100 + (get_upgrade_count("Bludgeon") * 20)
-	self.speed = speed + (get_upgrade_count("Kai's Goat Hoof") * (speed*0.15)) # 0.15x speed for each hoof
+	current_speed = speed + (get_upgrade_count("Kai's Goat Hoof") * (speed*0.1)) # 0.15x speed for each hoof
 	sword_collider.scale = Vector2(sc_size(), 1 + (get_upgrade_count("Extendo-grip")*grip_change_rate))
 	sword_collider.position = Vector2(10 * (sc_size()), -1 * (sword_collider.shape.size.y/2))
 

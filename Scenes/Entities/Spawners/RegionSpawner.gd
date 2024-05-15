@@ -18,7 +18,6 @@ func _ready():
 	print("No Area2D Found for RegionSpawner!")
 
 func spawn_enemy() -> void:
-	print("SPAWNING!")
 	var enemy = enemy_scenes.pick_random().instantiate()
 	add_child(enemy)
 	print(global_position)
@@ -30,11 +29,8 @@ func spawn_enemy() -> void:
 	enemies.append(enemy)
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
-	print("SAW")
 	if len(enemies) == 0:
-		print("VALID")
 		for x in range(amount_per_spawn):
-			print("STARTING SPAWN")
 			if spawn_count < 0:
 				queue_free()
 			spawn_enemy()
