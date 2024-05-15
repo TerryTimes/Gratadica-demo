@@ -3,8 +3,8 @@ class_name Master
 
 @export var open_on_menu: bool
 
-var menu = preload("res://Scenes/Main Scenes/main_menu.tscn")
-var main = preload("res://Scenes/Main Scenes/main1.tscn")
+var menu = "res://Scenes/Main Scenes/main_menu.tscn"
+var main = "res://Scenes/Main Scenes/main.tscn"
 
 var current_scene = null
 
@@ -19,5 +19,5 @@ func _ready():
 func load_scene(scene):
 	if current_scene:
 		remove_child(current_scene)
-	current_scene = scene.instantiate()
+	current_scene = ResourceLoader.load(scene).instantiate()
 	add_child(current_scene)
