@@ -19,6 +19,7 @@ color_ramp = SubResource("Gradient_tpx2y")
 noise = SubResource("FastNoiseLite_nk8b8")
 
 [node name="MainMenu" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_xuvhi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

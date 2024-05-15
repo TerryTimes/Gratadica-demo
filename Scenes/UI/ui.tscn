@@ -366,3 +366,4 @@ libraries = {
 script = ExtResource("8_oc1wh")
 
 [connection signal="pressed" from="PauseMenu/CenterContainer/List/Resume" to="." method="_on_resume_pressed"]
+[connection signal="button_up" from="PauseMenu/CenterContainer/List/Menu" to="." method="_on_menu_button_up"]

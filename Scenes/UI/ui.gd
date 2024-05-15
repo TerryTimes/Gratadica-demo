@@ -5,6 +5,7 @@ class_name UI
 @onready var upgrade_panel = $Control/UpgradePanel
 
 var current_time: float = 0
+var main_scene: Main
 
 var health = 0:
 	set(new_score):
@@ -17,6 +18,7 @@ func _ready():
 	upgrade_panel.visible = false
 	$ColorRect.visible = false
 	$PauseMenu.hide()
+	main_scene = get_parent()
 	
 func _process(delta):
 	if Input.is_action_just_pressed("Pause"):
@@ -51,3 +53,8 @@ func _on_resume_pressed():
 
 func _on_button_pressed():
 	pass # Replace with function body.
+
+func _on_menu_button_up():
+	"""Return to title screen."""
+	get_tree().paused = false
+	main_scene.master_scene.load_scene(main_scene.master_scene.menu)
