@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dla3iomcm87td"]
+[gd_scene load_steps=41 format=3 uid="uid://dla3iomcm87td"]
 
 [ext_resource type="Script" path="res://Scenes/Main Scenes/main.gd" id="1_apqg6"]
 [ext_resource type="PackedScene" uid="uid://bi4ogytocaskk" path="res://Scenes/Entities/player.tscn" id="1_y74ln"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://kvf6wnq12j0g" path="res://Scenes/UI/ui.tscn" id="21_7fro5"]
 [ext_resource type="PackedScene" uid="uid://5mprvm4wgp52" path="res://Assets/Environment/Scene Tiles/key.tscn" id="22_lxxy6"]
 [ext_resource type="PackedScene" uid="uid://cmr5uolpuxjmb" path="res://Assets/Environment/Scene Tiles/door.tscn" id="23_b22u5"]
+[ext_resource type="PackedScene" uid="uid://bsdavb5q6p3s4" path="res://Scenes/Entities/Spawners/RegionSpawner.tscn" id="24_llx1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jq25u"]
 size = Vector2(1995, 1336.5)
@@ -447,7 +448,7 @@ tilemap = NodePath("../Map/Regions/TileMap")
 [node name="Enemies" type="Node" parent="World/EnemyManager"]
 
 [node name="Enemy" parent="World/EnemyManager/Enemies" instance=ExtResource("9_d2m42")]
-position = Vector2(-1, -75)
+position = Vector2(176, -89)
 
 [node name="Enemy9" parent="World/EnemyManager/Enemies" instance=ExtResource("16_c45hs")]
 position = Vector2(89, -194)
@@ -462,32 +463,7 @@ autostart = true
 
 [node name="OnScreenSpawner" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
 position = Vector2(82, -256)
-enemy_scene = ExtResource("16_c45hs")
-spawn_count = 3
-
-[node name="OnScreenSpawner8" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
-position = Vector2(-316, -286)
 enemy_scene = ExtResource("9_d2m42")
-spawn_count = 3
-
-[node name="OnScreenSpawner9" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
-position = Vector2(-242, -287)
-enemy_scene = ExtResource("9_d2m42")
-spawn_count = 3
-
-[node name="OnScreenSpawner10" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
-position = Vector2(-261, -329)
-enemy_scene = ExtResource("9_d2m42")
-spawn_count = 3
-
-[node name="OnScreenSpawner11" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
-position = Vector2(-285, -274)
-enemy_scene = ExtResource("9_d2m42")
-spawn_count = 3
-
-[node name="OnScreenSpawner12" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
-position = Vector2(-299, -324)
-enemy_scene = ExtResource("7_wr4y8")
 spawn_count = 3
 
 [node name="OnScreenSpawner6" parent="World/EnemyManager/Spawners" instance=ExtResource("18_bhn4h")]
@@ -632,48 +608,54 @@ texture = ExtResource("15_hq3pp")
 [node name="Lighting" type="Node" parent="World/Map"]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="World/Map/Lighting"]
+visible = false
 color = Color(0.0156863, 0.141176, 1, 1)
 energy = 0.13
 shadow_color = Color(0, 0, 0, 0.643137)
 
 [node name="PointLight2D15" type="PointLight2D" parent="World/Map/Lighting"]
+visible = false
 position = Vector2(-3, 43.5)
 scale = Vector2(5.3125, 5.67187)
 energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
 [node name="PointLight2D16" type="PointLight2D" parent="World/Map/Lighting"]
+visible = false
 position = Vector2(168, -225)
 scale = Vector2(5.9375, 5.67187)
 energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
 [node name="PointLight2D17" type="PointLight2D" parent="World/Map/Lighting"]
+visible = false
 position = Vector2(-177, -212)
 scale = Vector2(5.9375, 5.67187)
 energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
 [node name="PointLight2D18" type="PointLight2D" parent="World/Map/Lighting"]
+visible = false
 position = Vector2(-455, -68)
 scale = Vector2(5.9375, 5.67187)
 energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
 [node name="PointLight2D19" type="PointLight2D" parent="World/Map/Lighting"]
+visible = false
 position = Vector2(294, -162)
 scale = Vector2(5.9375, 5.67187)
 energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
 [node name="PointLight2D20" type="PointLight2D" parent="World/Map/Lighting"]
+visible = false
 position = Vector2(363, 9)
 scale = Vector2(5.9375, 5.67187)
 energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("1_y74ln")]
-position = Vector2(4, 12)
 speed = 50
 
 [node name="Key" parent="World" instance=ExtResource("22_lxxy6")]
@@ -683,6 +665,21 @@ position = Vector2(-282, -303)
 position = Vector2(154, -287)
 key = NodePath("../Key")
 color = Color(0.345098, 0.529412, 1, 1)
+
+[node name="RegionSpawner" parent="." instance=ExtResource("24_llx1y")]
+position = Vector2(-39, -123)
+amount_per_spawn = 50
+enemy_scenes = Array[Resource]([ExtResource("7_wr4y8")])
+
+[node name="RegionSpawner2" parent="." instance=ExtResource("24_llx1y")]
+position = Vector2(-315, -328)
+amount_per_spawn = 7
+enemy_scenes = Array[Resource]([ExtResource("9_d2m42"), ExtResource("16_c45hs")])
+
+[node name="RegionSpawner3" parent="." instance=ExtResource("24_llx1y")]
+position = Vector2(-43, -315)
+amount_per_spawn = 7
+enemy_scenes = Array[Resource]([ExtResource("16_c45hs")])
 
 [connection signal="timeout" from="World/EnemyManager/Timers/SpawnEnemy" to="World/EnemyManager" method="_on_spawn_enemy_timeout"]
 [connection signal="died" from="World/Player" to="World/EnemyManager" method="_on_player_died"]
