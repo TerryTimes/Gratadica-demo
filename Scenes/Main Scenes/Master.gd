@@ -4,7 +4,7 @@ class_name Master
 @export var open_on_menu: bool
 
 var menu = preload("res://Scenes/Main Scenes/main_menu.tscn")
-var main = preload("res://Scenes/Main Scenes/main.tscn")
+var main = preload("res://Scenes/Main Scenes/main1.tscn")
 
 var current_scene = null
 
