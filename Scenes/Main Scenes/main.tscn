@@ -830,7 +830,7 @@ energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("1_y74ln")]
-position = Vector2(413, -278)
+position = Vector2(4, 11)
 speed = 50
 
 [node name="Key" parent="World" instance=ExtResource("22_lxxy6")]
