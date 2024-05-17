@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://db3alh8b8i635"]
+
+[ext_resource type="Texture2D" uid="uid://bnuul1rsk1ypp" path="res://Assets/Environment/Scene Tiles/gate.png" id="1_ejowu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2x6h"]
+size = Vector2(24, 23)
+
+[node name="Gate" type="StaticBody2D"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_s2x6h")
+
+[node name="Bush" type="Sprite2D" parent="." groups=["Enemies"]]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ejowu")

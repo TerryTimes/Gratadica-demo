@@ -23,6 +23,8 @@ var dir
 var attacking = false
 var alerted = false
 
+signal died
+
 func _ready():
 	nav_agent.path_desired_distance = speed / 5.0
 	nav_agent.target_desired_distance = speed / 5.0
@@ -43,6 +45,7 @@ func hit(dealt_damage, dealt_knockback, isecond_multiplier = 1):
 	
 	if health <= 0:
 		self.queue_free()
+		emit_signal("died")
 		
 func _process(delta):
 	# Display invincibility

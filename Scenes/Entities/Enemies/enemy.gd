@@ -16,10 +16,11 @@ extends CharacterBody2D
 var knockback = Vector2()
 var iseconds = 0
 
+signal died
+
 func _ready():
 	nav_agent.path_desired_distance = speed / 5.0
 	nav_agent.target_desired_distance = speed / 5.0
-	print(nav_agent.path_desired_distance)
 
 func get_player_distance(): 
 	# Get distance to the player
@@ -31,9 +32,6 @@ func hit(damage, dealt_knockback):
 		health -= damage
 		knockback = dealt_knockback * kb_resistance
 		iseconds += 0.3
-	
-	if health <= 0:
-		self.queue_free()
 		
 func _process(delta):
 	# Display invincibility

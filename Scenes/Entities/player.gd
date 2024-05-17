@@ -15,6 +15,8 @@ var speed_increase = 0
 var direction = Vector2(0, 0)
 var turn_cooldown = 0 # Used for deciding sprite rotation
 var max_health = 100
+var lifesteal = 0
+var enemies_per_hit = 1
 var grip_change_rate = 0.2 # Decides how powerful extendo grip is.
 var health = max_health
 var swinging = false
@@ -93,11 +95,15 @@ func swing() -> void:
 		return
 	$Swing.play()
 	var bodies = $SwordHitbox.get_overlapping_bodies()
+	var count = 0
 	for body in bodies:
+		if count >= enemies_per_hit:
+			break
 		if body.is_in_group("Enemies"):
+			count += 1
 			var kb_dir = Vector2(get_local_mouse_position().x, 0).normalized()
 			body.hit(10, kb_dir * knockback_strength)
-			self.health = min(self.max_health, self.health + get_upgrade_count('Leech'))
+			self.health = min(self.max_health, self.health + lifesteal)
 
 func update_animation_parameters():
 	# Updates parameters for the AnimationTree
@@ -130,9 +136,11 @@ func update_animation_parameters():
 			
 func set_stats():
 	self.knockback_strength = 100 + (get_upgrade_count("Bludgeon") * 20)
-	current_speed = speed + (get_upgrade_count("Kai's Goat Hoof") * (speed*0.1)) # 0.15x speed for each hoof
-	sword_collider.scale = Vector2(sc_size(), 1 + (get_upgrade_count("Extendo-grip")*grip_change_rate))
-	sword_collider.position = Vector2(10 * (sc_size()), -1 * (sword_collider.shape.size.y/2))
+	current_speed = speed + (get_upgrade_count("Kai's Goat Hoof") * (speed*0.1)) # Base speed + 0.1x speed for each hoof
+	lifesteal = get_upgrade_count('Leech')
+	enemies_per_hit = 1 + get_upgrade_count('Scythe')
+	sword_collider.scale = Vector2(sc_size(), 1 + (get_upgrade_count("Extendo-grip")*grip_change_rate)) # Scale +0.2x per extendo grip
+	sword_collider.position = Vector2(10 * (sc_size()), -1 * (sword_collider.shape.size.y/2)) # Align sword collider position
 
 func get_upgrade_count(upgrade):
 	if upgrade in Globals.upgrades:

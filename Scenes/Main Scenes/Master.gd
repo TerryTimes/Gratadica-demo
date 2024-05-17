@@ -13,8 +13,6 @@ func _ready():
 		load_scene(menu)
 	else:
 		load_scene(main)
-	get_viewport().size
-	print(get_viewport().size)
 
 func load_scene(scene):
 	if current_scene:

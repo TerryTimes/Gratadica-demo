@@ -255,7 +255,6 @@ shape = SubResource("RectangleShape2D_qvc8v")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
 zoom = Vector2(9, 9)
-position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

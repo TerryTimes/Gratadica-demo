@@ -14,6 +14,8 @@ config/name="Teru Project #1"
 run/main_scene="res://Scenes/Main Scenes/Master.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.105882, 0, 0.431373, 1)
+boot_splash/image="res://frame_00001.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [autoload]

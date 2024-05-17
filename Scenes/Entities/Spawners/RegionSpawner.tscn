@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsdavb5q6p3s4"]
+[gd_scene load_steps=4 format=3 uid="uid://bsdavb5q6p3s4"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Spawners/RegionSpawner.gd" id="1_jp6yk"]
+[ext_resource type="AudioStream" uid="uid://cfibdv37agqwh" path="res://Assets/Audio/SFX/Unlock.mp3" id="2_7prwi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gcvau"]
 size = Vector2(80, 80)
@@ -20,4 +21,9 @@ rect = Rect2(0, 0, 100, 100)
 position = Vector2(40, 40)
 shape = SubResource("RectangleShape2D_gcvau")
 
+[node name="Unlock" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_7prwi")
+volume_db = 0.627
+
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="child_exiting_tree" from="Enemies" to="." method="_on_enemies_child_exiting_tree"]
