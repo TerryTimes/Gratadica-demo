@@ -264,9 +264,9 @@ sprite_frames = SubResource("SpriteFrames_rqr62")
 animation = &"attack-left"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(2.99998, -22)
-scale = Vector2(1.6875, 1.78125)
-energy = 0.29
+position = Vector2(0, -9)
+scale = Vector2(0.5, 0.528)
+energy = 0.92
 texture = SubResource("GradientTexture2D_w0jyl")
 texture_scale = 1.32
 

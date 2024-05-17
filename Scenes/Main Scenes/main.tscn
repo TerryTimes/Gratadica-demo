@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cuxlcxpb4esm3" path="res://Resources/Backgrounds/background.png" id="10_weipk"]
 [ext_resource type="Texture2D" uid="uid://4kcpxi8chksw" path="res://Resources/Buttons/W_Key_Dark.png" id="11_6cxkp"]
 [ext_resource type="Texture2D" uid="uid://bvt8nmol6ktxn" path="res://Resources/Buttons/A_Key_Dark.png" id="12_lswwd"]
-[ext_resource type="Texture2D" uid="uid://ch6pphhbutp20" path="res://Assets/Environment/Tilesets/Grid (4).png" id="13_7gq1j"]
 [ext_resource type="Texture2D" uid="uid://jwn87yatjq2c" path="res://Resources/Buttons/S_Key_Dark.png" id="13_23hfj"]
+[ext_resource type="Texture2D" uid="uid://bq7ysgfk1fbvx" path="res://Assets/Environment/Tilesets/Grid (6)-1.png.png" id="14_8eyqy"]
 [ext_resource type="Texture2D" uid="uid://brxkkflk8xa4o" path="res://Resources/Buttons/D_Key_Dark.png" id="14_xq2ja"]
 [ext_resource type="PackedScene" uid="uid://ccmyttj3gfer1" path="res://Assets/Environment/Scene Tiles/bush.tscn" id="15_dddhq"]
 [ext_resource type="Texture2D" uid="uid://bpgrol0w03w5w" path="res://Resources/Buttons/Mouse_Left_Key_Dark.png" id="15_hq3pp"]
@@ -125,7 +125,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_skjwm"]
-texture = ExtResource("13_7gq1j")
+texture = ExtResource("14_8eyqy")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -476,11 +476,11 @@ sources/0 = SubResource("TileSetAtlasSource_skjwm")
 sources/1 = SubResource("TileSetScenesCollectionSource_dauwf")
 sources/2 = SubResource("TileSetScenesCollectionSource_i1ggc")
 
-[sub_resource type="Gradient" id="Gradient_q25qc"]
+[sub_resource type="Gradient" id="Gradient_dqelc"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rx5il"]
-gradient = SubResource("Gradient_q25qc")
+gradient = SubResource("Gradient_dqelc")
 fill = 1
 fill_from = Vector2(0.501529, 0.474006)
 fill_to = Vector2(0.856269, 0.140673)
@@ -773,7 +773,7 @@ energy = 0.33
 texture = SubResource("GradientTexture2D_rx5il")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("1_y74ln")]
-position = Vector2(-20, -476)
+position = Vector2(413, -278)
 speed = 50
 
 [node name="Key" parent="World" instance=ExtResource("22_lxxy6")]
@@ -788,7 +788,8 @@ color = Color(0.345098, 0.529412, 1, 1)
 position = Vector2(-2, -121)
 
 [node name="Enemy" parent="." instance=ExtResource("26_uxd8m")]
-position = Vector2(-76, -480)
+position = Vector2(515, -278)
+directional_attacking = false
 
 [connection signal="timeout" from="World/EnemyManager/Timers/SpawnEnemy" to="World/EnemyManager" method="_on_spawn_enemy_timeout"]
 [connection signal="died" from="World/Player" to="World/EnemyManager" method="_on_player_died"]

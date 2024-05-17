@@ -37,6 +37,10 @@ func get_player_distance():
 	# Get distance to the player
 	return self.global_position.distance_to(Globals.player_pos)
 	
+func get_player_direction(): 
+	# Get distance to the player
+	return self.global_position.direction_to(Globals.player_pos)
+	
 func hit(dealt_damage, dealt_knockback, isecond_multiplier = 1):
 	"""Damage the enemy and deal knockback"""
 	if iseconds <= 0:
@@ -60,8 +64,7 @@ func _process(delta):
 	if iseconds < 0:
 		iseconds = 0
 
-func attack():
-	attacking = true
+func _animate_attack():
 	if directional_attacking:
 		if dir[0] < 0:
 			sprite.play("attack-left")
@@ -69,10 +72,32 @@ func attack():
 			sprite.play("attack-right")
 	else:
 		sprite.play("attack")
+
+func _attack_logic():
 	for object in attack_hitbox.get_overlapping_bodies():
 		if object.is_in_group("player"):
 			object.hit(damage, self.global_position.direction_to(object.position) * damage_knockback)
+
+func attack():
+	attacking = true
+	_animate_attack()
+	_attack_logic()
 	attacking = false
+
+func _can_attack() -> bool:
+	var distance = get_player_distance()
+	return attack_timer.is_stopped() and distance <= speed * stop_distance and alerted
+
+func _alert():
+	pass
+
+func _animate_movement():
+	if velocity[0] < 0:
+		sprite.play("move-left")
+	elif velocity[0] > 0:
+		sprite.play("move-right")
+	else:
+		sprite.play("idle")
 
 func _physics_process(delta):
 	# Moves along agent path
@@ -82,6 +107,7 @@ func _physics_process(delta):
 	
 	if not alerted and distance <= aggression_radius:
 		$Alert.play()
+		_alert()
 		alerted = true
 	elif alerted and distance > aggression_radius * 2:
 		alerted = false
@@ -89,7 +115,7 @@ func _physics_process(delta):
 	if not alerted:
 		can_move = 0
 	
-	if attack_timer.is_stopped() and distance <= speed * stop_distance and alerted:
+	if _can_attack():
 		attack()
 		attack_timer.start()
 	
@@ -98,14 +124,8 @@ func _physics_process(delta):
 	# Update knockback
 	knockback = knockback - (knockback / 1.5) * delta
 
-
-	if (not (sprite.animation == "attack-left" or sprite.animation == "attack-right")) or not sprite.is_playing():
-		if velocity[0] < 0:
-			sprite.play("move-left")
-		elif velocity[0] > 0:
-			sprite.play("move-right")
-		else:
-			sprite.play("idle")
+	if (not (sprite.animation == "attack-left" or sprite.animation == "attack-right" or sprite.animation == "attack")) or not sprite.is_playing():
+		_animate_movement()
 
 	move_and_slide()
 
