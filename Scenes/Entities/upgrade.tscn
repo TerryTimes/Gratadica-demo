@@ -19,6 +19,7 @@ fill_from = Vector2(0.538462, 0.482906)
 fill_to = Vector2(0.846154, 0.149573)
 
 [node name="Upgrade" type="StaticBody2D"]
+collision_layer = 0
 script = ExtResource("1_omuho")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

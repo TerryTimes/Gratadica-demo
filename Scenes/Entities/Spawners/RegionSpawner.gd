@@ -35,7 +35,7 @@ func spawn_enemy() -> void:
 	enemy.global_position = Vector2(x, y)
 	spawn_count -= 1
 	enemies.append(enemy)
-	
+
 func _check_node_deletion():
 	if waves_spawned > 0 and len(enemies) <= 0 and len(delete_on_killed) > 0:
 		for node in delete_on_killed:
@@ -46,12 +46,14 @@ func _check_node_deletion():
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	if len(enemies) == 0:
 		waves_spawned += 1
-		
+
 		for x in range(amount_per_spawn):
+			print(spawn_count)
 			if spawn_count < 0:
 				queue_free()
 			spawn_enemy()
 
 func _on_enemies_child_exiting_tree(node):
+	print(node)
 	enemies.erase(node)
 	_check_node_deletion()

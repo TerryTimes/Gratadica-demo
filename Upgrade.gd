@@ -29,7 +29,7 @@ func _ready():
 func _on_pickup_range_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	if body.is_in_group('player'):
 		body.gain_upgrade(upgrade, icon)
-	queue_free()
+		queue_free()
 
 func _process(delta):
 	sprite.offset += Vector2(0, max_movement * direction) * delta

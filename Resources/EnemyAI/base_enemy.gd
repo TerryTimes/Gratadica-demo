@@ -15,6 +15,7 @@ class_name Enemy
 @export var damage_knockback = 0
 @export var attack_cooldown = 0.5
 @export var iseconds_given = 0.3 # The amount of minimum time before the enemy can take damage again
+@export var directional_attacking:bool = true
 
 var pushback_distance = 25
 var knockback = Vector2()
@@ -46,7 +47,7 @@ func hit(dealt_damage, dealt_knockback, isecond_multiplier = 1):
 	if health <= 0:
 		self.queue_free()
 		emit_signal("died")
-		
+
 func _process(delta):
 	# Display invincibility
 	if iseconds > 0:
@@ -61,10 +62,13 @@ func _process(delta):
 
 func attack():
 	attacking = true
-	if dir[0] < 0:
-		sprite.play("attack-left")
+	if directional_attacking:
+		if dir[0] < 0:
+			sprite.play("attack-left")
+		else:
+			sprite.play("attack-right")
 	else:
-		sprite.play("attack-right")
+		sprite.play("attack")
 	for object in attack_hitbox.get_overlapping_bodies():
 		if object.is_in_group("player"):
 			object.hit(damage, self.global_position.direction_to(object.position) * damage_knockback)
@@ -93,8 +97,8 @@ func _physics_process(delta):
 	
 	# Update knockback
 	knockback = knockback - (knockback / 1.5) * delta
-	
-	
+
+
 	if (not (sprite.animation == "attack-left" or sprite.animation == "attack-right")) or not sprite.is_playing():
 		if velocity[0] < 0:
 			sprite.play("move-left")
@@ -102,7 +106,7 @@ func _physics_process(delta):
 			sprite.play("move-right")
 		else:
 			sprite.play("idle")
-	
+
 	move_and_slide()
 
 func make_path() -> void:
@@ -111,7 +115,6 @@ func make_path() -> void:
 
 func _on_path_timer_timeout():
 	make_path()
-
 
 func _on_attack_timer_timeout():
 	print('W')

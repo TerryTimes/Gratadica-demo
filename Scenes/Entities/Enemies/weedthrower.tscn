@@ -1,0 +1,254 @@
+[gd_scene load_steps=37 format=3 uid="uid://b7nxr6inywbmw"]
+
+[ext_resource type="Script" path="res://Resources/EnemyAI/base_enemy.gd" id="1_mkdmv"]
+[ext_resource type="Texture2D" uid="uid://cqb4v0xyu6drh" path="res://Assets/Enemies/weedthrower/Weedthrower attack/Weedthrower0.png" id="2_4uupe"]
+[ext_resource type="Texture2D" uid="uid://bwvh633ti8vh" path="res://Assets/Enemies/weedthrower/Weedthrower attack/Weedthrower1.png" id="3_j6f2m"]
+[ext_resource type="Texture2D" uid="uid://d3y13ex637i5x" path="res://Assets/Enemies/weedthrower/Weedthrower attack/Weedthrower2.png" id="4_qf8n6"]
+[ext_resource type="Texture2D" uid="uid://bfdgmjdargea4" path="res://Assets/Enemies/weedthrower/Weedthrower attack/Weedthrower3.png" id="5_b1ob3"]
+[ext_resource type="Texture2D" uid="uid://d4ld084c27mw6" path="res://Assets/Enemies/weedthrower/Weedthrower attack/Weedthrower4.png" id="6_l1x6f"]
+[ext_resource type="Texture2D" uid="uid://c066qbkmbcm77" path="res://Assets/Enemies/weedthrower/Weedthrower attack/Weedthrower5.png" id="7_hro5t"]
+[ext_resource type="Texture2D" uid="uid://d1lspoxwjp4k2" path="res://Assets/Enemies/weedthrower/Weedthrower attack/Weedthrower6.png" id="8_ear8b"]
+[ext_resource type="Texture2D" uid="uid://dw46bxn77qim" path="res://Assets/Enemies/weedthrower/Weedthrower attack/Weedthrower7.png" id="9_jmgct"]
+[ext_resource type="Texture2D" uid="uid://dm1qgkhbr1g1l" path="res://Assets/Enemies/weedthrower/Weedthrower attack/Weedthrower8.png" id="10_a7tar"]
+[ext_resource type="Texture2D" uid="uid://b1dsrgtd7ct45" path="res://Assets/Enemies/sporespawn/Spore spawn left/Spore Spawn Left_0.png" id="14_64u2c"]
+[ext_resource type="Texture2D" uid="uid://vn3rwub1d741" path="res://Assets/Enemies/sporespawn/Spore spawn left/Spore Spawn Left_1.png" id="15_18h0w"]
+[ext_resource type="Texture2D" uid="uid://eepby7evq82" path="res://Assets/Enemies/weedthrower/weedthrower idle/Weedthrower Idle-1.png.png" id="15_h8t2x"]
+[ext_resource type="Texture2D" uid="uid://dnwfdiygv0a6b" path="res://Assets/Enemies/weedthrower/weedthrower idle/Weedthrower Idle-2.png.png" id="16_jn3qj"]
+[ext_resource type="Texture2D" uid="uid://xaurj00h65te" path="res://Assets/Enemies/sporespawn/Spore spawn left/Spore Spawn Left_2.png" id="16_m2awj"]
+[ext_resource type="Texture2D" uid="uid://d1pxgjsmnp5vk" path="res://Assets/Enemies/weedthrower/weedthrower idle/Weedthrower Idle-3.png.png" id="17_6iie6"]
+[ext_resource type="Texture2D" uid="uid://bdq100hjr1klm" path="res://Assets/Enemies/sporespawn/Spore spawn left/Spore Spawn Left_3.png" id="17_me45x"]
+[ext_resource type="Texture2D" uid="uid://b8qolxhhul5uu" path="res://Assets/Enemies/sporespawn/Spore spawn right/Spore Spawn Right-1.png.png" id="18_5kat0"]
+[ext_resource type="Texture2D" uid="uid://xy3dj5a6qcor" path="res://Assets/Enemies/weedthrower/weedthrower idle/Weedthrower Idle-4.png.png" id="18_tyul6"]
+[ext_resource type="Texture2D" uid="uid://dfx0xp0bh71pr" path="res://Assets/Enemies/sporespawn/Spore spawn right/Spore Spawn Right-2.png.png" id="19_iltaw"]
+[ext_resource type="Texture2D" uid="uid://dffb2wwuajj0s" path="res://Assets/Enemies/sporespawn/Spore spawn right/Spore Spawn Right-3.png.png" id="20_shxw3"]
+[ext_resource type="Texture2D" uid="uid://d12svie4n3nhm" path="res://Assets/Enemies/sporespawn/Spore spawn right/Spore Spawn Right-4.png.png" id="21_82mqr"]
+[ext_resource type="AudioStream" uid="uid://cbqovrnx3w0ej" path="res://Assets/Audio/SFX/alert.mp3" id="22_qpkke"]
+[ext_resource type="Texture2D" uid="uid://cli4ynbuhjple" path="res://Assets/Enemies/weedthrower/Weedthrower popout/sprite_00.png" id="27_xt00g"]
+[ext_resource type="Texture2D" uid="uid://1hf1y2lkxosr" path="res://Assets/Enemies/weedthrower/Weedthrower popout/sprite_01.png" id="28_72shd"]
+[ext_resource type="Texture2D" uid="uid://c6iyvlyfxvoo6" path="res://Assets/Enemies/weedthrower/Weedthrower popout/sprite_02.png" id="29_ftr0p"]
+[ext_resource type="Texture2D" uid="uid://ba2mfsy0y41j1" path="res://Assets/Enemies/weedthrower/Weedthrower popout/sprite_03.png" id="30_4bkt5"]
+[ext_resource type="Texture2D" uid="uid://b7r5eqeloq5fe" path="res://Assets/Enemies/weedthrower/Weedthrower popout/sprite_04.png" id="31_d5k04"]
+[ext_resource type="Texture2D" uid="uid://bc7ejbco658hy" path="res://Assets/Enemies/weedthrower/Weedthrower popout/sprite_05.png" id="32_4s544"]
+[ext_resource type="Texture2D" uid="uid://sl7c1p00l7vt" path="res://Assets/Enemies/weedthrower/Weedthrower popout/sprite_06.png" id="33_6lmjl"]
+[ext_resource type="Texture2D" uid="uid://bbj4ady5ot78m" path="res://Assets/Enemies/weedthrower/Weedthrower popout/sprite_07.png" id="34_4sytp"]
+[ext_resource type="Texture2D" uid="uid://bvuyh3jq4vpiy" path="res://Assets/Enemies/weedthrower/Weedthrower popout/sprite_08.png" id="35_ipatv"]
+[ext_resource type="Texture2D" uid="uid://caw1ykknkai55" path="res://Assets/Enemies/weedthrower/Weedthrower popout/sprite_09.png" id="36_1cebq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n71su"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6mc7"]
+size = Vector2(245.35, 92.1329)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_svnq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4uupe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j6f2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qf8n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b1ob3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l1x6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hro5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ear8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jmgct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a7tar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a7tar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jmgct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ear8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hro5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l1x6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b1ob3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qf8n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j6f2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4uupe")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_h8t2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jn3qj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_6iie6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_tyul6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_64u2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_18h0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_m2awj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_me45x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_m2awj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_18h0w")
+}],
+"loop": true,
+"name": &"move-left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_5kat0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_iltaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_shxw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_82mqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_shxw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_iltaw")
+}],
+"loop": true,
+"name": &"move-right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_xt00g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_72shd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_ftr0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_4bkt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_d5k04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_4s544")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_6lmjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_4sytp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_ipatv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_1cebq")
+}],
+"loop": true,
+"name": &"spawn",
+"speed": 15.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+rotation = 0.0011746
+scale = Vector2(1, 0.997814)
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0
+safe_margin = 0.04
+script = ExtResource("1_mkdmv")
+speed = 0
+health = 50
+kb_resistance = 0.0
+stop_distance = 0.2
+aggression_radius = 50
+attack_cooldown = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.011746, -10.0219)
+shape = SubResource("CircleShape2D_n71su")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 140.0
+target_desired_distance = 111.91
+radius = 67.32
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(-0.00352696, -14.2449)
+scale = Vector2(0.220094, 0.3)
+shape = SubResource("RectangleShape2D_t6mc7")
+debug_color = Color(0.894118, 0.290196, 0.352941, 0.419608)
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="PathTimer" type="Timer" parent="Timers"]
+wait_time = 0.147
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.017619, -15.0329)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_svnq5")
+animation = &"attack"
+
+[node name="Alert" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_qpkke")
+
+[connection signal="timeout" from="Timers/PathTimer" to="." method="_on_path_timer_timeout"]
