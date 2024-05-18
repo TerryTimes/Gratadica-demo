@@ -700,6 +700,7 @@ stream = ExtResource("8_cslvj")
 
 [node name="Music" type="AudioStreamPlayer" parent="World/SoundRegions"]
 stream = ExtResource("8_cslvj")
+autoplay = true
 
 [node name="Unused" type="Node" parent="World"]
 
