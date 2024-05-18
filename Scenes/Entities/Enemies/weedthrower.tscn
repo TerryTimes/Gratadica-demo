@@ -181,6 +181,7 @@ kb_resistance = 0.0
 aggression_radius = 50
 damage = 15
 attack_cooldown = 1.0
+directional_attacking = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.011746, -10.0219)

@@ -19,11 +19,9 @@ func _animate_movement():
 		sprite.play("sleep")
 		
 func _alert():
-	print("Spawning...")
 	spawning = true
 	$AnimatedSprite2D.stop()
 	sprite.play("spawn")
-	print(sprite.animation)
 
 func _animate_attack():
 	if spawning:
@@ -37,7 +35,6 @@ func _animate_attack():
 		sprite.play("attack")
 
 func _attack_logic():
-	print("ATTACKING!")
 	if spawning:
 		return
 	var proj = projectile.instantiate()
@@ -49,5 +46,4 @@ func _attack_logic():
 
 func _on_animated_sprite_2d_animation_finished():
 	if sprite.animation == 'spawn':
-		print("AA")
 		spawning = false

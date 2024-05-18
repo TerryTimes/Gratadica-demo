@@ -1,10 +1,66 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2ncvytor06f0"]
+[gd_scene load_steps=31 format=3 uid="uid://b2ncvytor06f0"]
 
-[ext_resource type="Texture2D" uid="uid://l5bqsq8gfpck" path="res://Assets/Images/thumb.png" id="1_2kcs0"]
+[ext_resource type="Texture2D" uid="uid://l5bqsq8gfpck" path="res://Assets/Images/Menu/thumb.png" id="1_2kcs0"]
 [ext_resource type="Script" path="res://Scenes/Main Scenes/main_menu.gd" id="1_xuvhi"]
 [ext_resource type="AudioStream" uid="uid://7lqijkeu4uol" path="res://Assets/Audio/Music/Fractured.mp3" id="2_3cxh6"]
-[ext_resource type="Texture2D" uid="uid://uysrm56j3y6b" path="res://Assets/Images/button.png" id="2_12jy8"]
+[ext_resource type="Texture2D" uid="uid://uysrm56j3y6b" path="res://Assets/Images/Menu/button.png" id="2_12jy8"]
 [ext_resource type="Script" path="res://Scenes/Main Scenes/noise_scroll.gd" id="2_xm2th"]
+[ext_resource type="Texture2D" uid="uid://ci3j6dw2wj5if" path="res://Assets/Images/Menu/thumb/sky/frame_00001.png" id="3_qk3dn"]
+[ext_resource type="Texture2D" uid="uid://fyu1e7wbsfce" path="res://Assets/Images/Menu/thumb/sky/frame_00002.png" id="4_wps5x"]
+[ext_resource type="Texture2D" uid="uid://dtwlqvr216awp" path="res://Assets/Images/Menu/thumb/sky/frame_00003.png" id="5_flm1w"]
+[ext_resource type="Texture2D" uid="uid://supavidl2oj" path="res://Assets/Images/Menu/thumb/teru/frame_00001.png" id="5_ykuuu"]
+[ext_resource type="Texture2D" uid="uid://1w7e2fe8ypsb" path="res://Assets/Images/Menu/thumb/teru/frame_00002.png" id="6_eb0ee"]
+[ext_resource type="Texture2D" uid="uid://cege56nh2s06r" path="res://Assets/Images/Menu/thumb/sky/frame_00004.png" id="6_tqyi6"]
+[ext_resource type="Texture2D" uid="uid://bubafwf4aajo7" path="res://Assets/Images/Menu/thumb/teru/frame_00003.png" id="7_bcscu"]
+[ext_resource type="Texture2D" uid="uid://bxt8kumqwdan4" path="res://Assets/Images/Menu/thumb/sky/frame_00005.png" id="7_uv08q"]
+[ext_resource type="Texture2D" uid="uid://dktw47gugbnh2" path="res://Assets/Images/Menu/thumb/teru/frame_00004.png" id="8_1y3hm"]
+[ext_resource type="Texture2D" uid="uid://cqvbmr86qpd5o" path="res://Assets/Images/Menu/thumb/teru/frame_00005.png" id="9_bxf10"]
+[ext_resource type="Texture2D" uid="uid://ch6ptsuc0fe48" path="res://Assets/Images/Menu/thumb/ball/frame_00001.png" id="13_1q2eo"]
+[ext_resource type="Texture2D" uid="uid://f1hknsd3ulht" path="res://Assets/Images/Menu/phos.png" id="13_cn0vb"]
+[ext_resource type="Texture2D" uid="uid://cvk1htx05mwbr" path="res://Assets/Images/Menu/thumb/ball/frame_00002.png" id="14_3x0hq"]
+[ext_resource type="Script" path="res://Scenes/UI/phoslogo.gd" id="14_8ido8"]
+[ext_resource type="Texture2D" uid="uid://bscr850owqvok" path="res://Assets/Images/Menu/thumb/ball/frame_00003.png" id="15_fjnaf"]
+[ext_resource type="Texture2D" uid="uid://ct0ct6h2b6fi4" path="res://Assets/Images/Menu/thumb/ball/frame_00004.png" id="16_k8o3x"]
+[ext_resource type="Texture2D" uid="uid://cpcq71abw3l1m" path="res://Assets/Images/Menu/thumb/ball/frame_00005.png" id="17_j2ql1"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_8agu7"]
+frames = 5
+speed_scale = 5.0
+frame_0/texture = ExtResource("3_qk3dn")
+frame_1/texture = ExtResource("4_wps5x")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("5_flm1w")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("6_tqyi6")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("7_uv08q")
+frame_4/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_fj12u"]
+frames = 5
+speed_scale = 5.0
+frame_0/texture = ExtResource("5_ykuuu")
+frame_1/texture = ExtResource("6_eb0ee")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("7_bcscu")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("8_1y3hm")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("9_bxf10")
+frame_4/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_0jv4i"]
+frames = 5
+speed_scale = 5.0
+frame_0/texture = ExtResource("13_1q2eo")
+frame_1/texture = ExtResource("14_3x0hq")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("15_fjnaf")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("16_k8o3x")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("17_j2ql1")
+frame_4/duration = 1.0
 
 [sub_resource type="Gradient" id="Gradient_tpx2y"]
 colors = PackedColorArray(0, 0, 1, 1, 0, 0.014, 0.14, 1)
@@ -17,6 +73,12 @@ offset = Vector3(-311.14, 0, 0)
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vovro"]
 color_ramp = SubResource("Gradient_tpx2y")
 noise = SubResource("FastNoiseLite_nk8b8")
+
+[sub_resource type="Gradient" id="Gradient_ix8ku"]
+colors = PackedColorArray(0, 0.100855, 0.624272, 1, 0.024, 0, 0.36, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7l4yd"]
+gradient = SubResource("Gradient_ix8ku")
 
 [node name="MainMenu" type="Node2D"]
 process_mode = 3
@@ -31,20 +93,74 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Thumb" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
 texture = ExtResource("1_2kcs0")
 stretch_mode = 4
+
+[node name="Thumb2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AnimatedTexture_8agu7")
+stretch_mode = 4
+
+[node name="Thumb3" type="TextureRect" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AnimatedTexture_fj12u")
+stretch_mode = 4
+
+[node name="Thumb5" type="TextureRect" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AnimatedTexture_0jv4i")
+stretch_mode = 4
+
+[node name="Thumb4" type="TextureRect" parent="CanvasLayer"]
+z_index = 1
+offset_left = -2.0
+offset_top = -98.0
+offset_right = 1364.0
+offset_bottom = 814.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("13_cn0vb")
+stretch_mode = 4
+script = ExtResource("14_8ido8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 modulate = Color(0, 0.564706, 1, 1)
 z_index = 5
-anchors_preset = 9
+anchors_preset = -1
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_right = 475.0
+offset_right = -323.0
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -97,6 +213,7 @@ text = "Begin
 "
 
 [node name="Noise" type="TextureRect" parent="CanvasLayer"]
+visible = false
 modulate = Color(1, 1, 1, 0.0823529)
 z_index = 3
 anchors_preset = 15
@@ -108,6 +225,18 @@ mouse_filter = 2
 texture = SubResource("NoiseTexture2D_vovro")
 script = ExtResource("2_xm2th")
 scroll_speed = 50.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_7l4yd")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_3cxh6")
