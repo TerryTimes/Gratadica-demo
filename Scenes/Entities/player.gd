@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 signal died
+signal death_finished
 signal health_change
 signal upgrade_collect
 
@@ -162,3 +163,7 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_swing_cooldown_timeout():
 	pass # Replace with function body.
+
+
+func _on_death_finished():
+	death_finished.emit()

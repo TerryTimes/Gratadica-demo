@@ -6,6 +6,7 @@ class_name UI
 
 var current_time: float = 0
 var main_scene: Main
+var can_unpause = true
 
 var health = 0:
 	set(new_score):
@@ -19,18 +20,21 @@ func _ready():
 	$ColorRect.visible = false
 	$PauseMenu.hide()
 	main_scene = get_parent()
-	
+
 func _process(delta):
 	if Input.is_action_just_pressed("Pause"):
-		pause()
+		pause(true)
 	current_time += delta
-	
-func pause():
+
+
+func pause(state):
 	var tree = get_tree()
-	tree.paused = !tree.paused
-	$ColorRect.visible = tree.paused
-	$PauseMenu.visible = tree.paused
+	if state == false and not can_unpause:
+		state = true
+	tree.paused = state
 	
+	$ColorRect.visible = state
+	$PauseMenu.visible = state
 
 func _update_health_label():
 	"""Update the healthbar"""
@@ -49,7 +53,7 @@ func display_upgrade(u_name, description, lore, icon:CompressedTexture2D=null):
 	upgrade_panel.get_node("AnimationPlayer").play("popup")
 
 func _on_resume_pressed():
-	pause()
+	pause(false)
 
 func _on_button_pressed():
 	pass # Replace with function body.
