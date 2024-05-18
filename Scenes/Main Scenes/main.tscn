@@ -700,7 +700,6 @@ stream = ExtResource("8_cslvj")
 
 [node name="Music" type="AudioStreamPlayer" parent="World/SoundRegions"]
 stream = ExtResource("8_cslvj")
-autoplay = true
 
 [node name="Unused" type="Node" parent="World"]
 
@@ -880,7 +879,7 @@ energy = 1.83
 texture = SubResource("GradientTexture2D_rx5il")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("1_y74ln")]
-position = Vector2(-101, -359)
+position = Vector2(0, 14)
 speed = 50
 
 [node name="Key" parent="World" instance=ExtResource("22_lxxy6")]
